@@ -2,16 +2,18 @@
     <div class="user-root">
         <img class="user-icon" src="../assets/head_icon.jpg" alt="">
         <span class="user-name">xandone</span>
-        <a href="https://github.com/xandone" target="_blank">
+        <div class="user-info">
+            <a href="https://github.com/xandone" target="_blank">
             <div class="github-span">
                 <img class="info-img" src="../assets/github.png" alt="">
                 <span>github</span>
             </div>
+            </a>
             <div class="mail-span">
                 <img class="info-img" src="../assets/mails.png" alt="">
-                <span>765478955@qq.com</span>
+                <span >765478955@qq.com</span>
             </div>
-        </a>
+        </div>
     </div>
 </template>
 <script></script>
@@ -21,11 +23,11 @@
 .user-root {
     width: 22%;
     height: 100%;
-    background-color: #123;
     display: flex;
     position: fixed;
     flex-direction: column;
     align-items: center;
+    margin-top: 30px;
 
     .user-icon {
         width: 150px;
@@ -36,6 +38,10 @@
     .user-name {
         font-size: 30px;
         font-weight: bold;
+    }
+
+    .user-info {
+        margin-top: 10px;
     }
 
     .info-img {
@@ -55,6 +61,7 @@
 
     .mail-span {
         display: flex;
+        margin-top: 5px;
     }
 }
 </style>
