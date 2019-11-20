@@ -23,7 +23,7 @@ export default {
     },
     methods: {
         getArticleList() {
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 30; i++) {
                 const table = {};
                 table.index = i;
                 table.title = "几点回家福克斯的恢复开始的会计师";
@@ -40,7 +40,7 @@ export default {
 @import "@/common/base.scss";
 
 .article-root {
-    width: 60%;
+    width: 50%;
     height: 100%;
     margin: 0 auto;
 }
