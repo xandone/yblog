@@ -20,6 +20,11 @@
 <style lang="scss">
 @import "@/common/base";
 
+user-span {
+    font-size: 15px;
+    color: #999;
+}
+
 .user-root {
     width: 22%;
     height: 100%;
@@ -45,23 +50,29 @@
     }
 
     .info-img {
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
     }
 
     .github-span {
         display: flex;
 
         span {
-            font-size: 16px;
+            @extend user-span;
             margin-left: 6px;
             color: $text_blue;
         }
     }
 
     .mail-span {
+        @extend user-span;
         display: flex;
+        align-items: center;
         margin-top: 5px;
+
+        span {
+            margin-left: 6px;
+        }
     }
 }
 </style>

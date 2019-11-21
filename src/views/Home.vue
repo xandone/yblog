@@ -16,10 +16,13 @@ export default {
 }
 </script>
 <style lang="scss">
+@import "@/common/base";
+
 .home-root {
+    background-color: #234;
     display: flex;
     justify-content: flex-start;
     width: 100%;
-    height: 100%;
+    padding-top: $topbarHeight;
 }
 </style>

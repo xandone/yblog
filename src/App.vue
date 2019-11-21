@@ -3,6 +3,14 @@
         <router-view />
     </div>
 </template>
+<script>
+// import topBar from '@/components/topBar'
+export default {
+    components: {
+        // topBar,
+    }
+}
+</script>
 <style lang="scss">
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;

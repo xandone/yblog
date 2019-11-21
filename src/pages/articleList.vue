@@ -42,6 +42,7 @@ export default {
 .article-root {
     width: 50%;
     height: 100%;
-    margin: 0 auto;
+    background-color: #123;
+    margin-top: 50px;
 }
 </style>
