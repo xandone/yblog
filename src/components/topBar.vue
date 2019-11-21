@@ -1,23 +1,38 @@
 <template>
     <div id="topBar">
-        <el-tabs v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane label="首页" name="first"></el-tab-pane>
-            <el-tab-pane label="编程" name="second"></el-tab-pane>
-            <el-tab-pane label="杂文" name="third"></el-tab-pane>
-            <el-tab-pane label="相册" name="fourth"></el-tab-pane>
-        </el-tabs>
+        <a href="/" class="blog-name"> <span >xandone</span></a>
+        <div class="tab">
+            <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+                <el-menu-item index="1">首页</el-menu-item>
+                <el-menu-item index="2">编程</el-menu-item>
+                <el-menu-item index="3">杂文</el-menu-item>
+                <el-menu-item index="4">图片</el-menu-item>
+                <el-menu-item index="5">关于</el-menu-item>
+            </el-menu>
+        </div>
     </div>
 </template>
 <script>
 export default {
     data() {
         return {
-            activeName: 'first',
+            activeIndex: '1',
         };
     },
     methods: {
-        handleClick(tab, event) {
-            console.log(tab, event);
+        handleSelect(key) {
+            console.log(key);
+            switch (key) {
+                case '1':
+                    this.$router.push('/');
+                    break;
+                case '2':
+                    this.$router.push('/articleList');
+                    break;
+                case '5':
+                    this.$router.push('/aboutMe');
+                    break;
+            }
         }
     }
 }
@@ -29,6 +44,25 @@ export default {
     width: 100%;
     height: $topbarHeight;
     position: fixed;
-    background-color: white;
+    z-index: 10;
+    background-color: #545c64;
+}
+
+.tab {
+    background-color: red;
+    display: inline-block;
+    height: $topbarHeight;
+    position: absolute;
+    right: 15%;
+    bottom: 0;
+}
+
+.blog-name {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffd04b;
+    float: left;
+    line-height: $topbarHeight;
+    margin-left: 10%;
 }
 </style>

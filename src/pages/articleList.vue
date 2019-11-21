@@ -1,6 +1,6 @@
 <template>
     <div class="article-root">
-        <div>
+        <div class="content">
             <articleItem v-for="item in tableData " :bean='item' v-bind:key='item.index'></articleItem>
         </div>
     </div>
@@ -40,9 +40,13 @@ export default {
 @import "@/common/base.scss";
 
 .article-root {
-    width: 50%;
+     margin-top: $topbarHeight;
+     position: absolute;
+}
+
+.content {
+    width: 60%;
     height: 100%;
-    background-color: #123;
-    margin-top: 50px;
+    margin: 0 auto;
 }
 </style>

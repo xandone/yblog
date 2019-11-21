@@ -1,13 +1,14 @@
 <template>
     <div id="app" class="fill">
+        <topBar></topBar>
         <router-view />
     </div>
 </template>
 <script>
-// import topBar from '@/components/topBar'
+import topBar from '@/components/topBar'
 export default {
     components: {
-        // topBar,
+        topBar,
     }
 }
 </script>

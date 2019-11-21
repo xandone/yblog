@@ -1,17 +1,22 @@
 <template>
     <div class="item-root">
-        <div class="title-root">
-            <a href="#">
+        <img class="place-img" src="../assets/head_icon.jpg" alt="">
+        <div class="wrap-scan">
+            <div class="title-root">
+                <a href="#">
             <span class="title-span">{{bean.title}}</span>
-        </a>
-        </div>
-        <div class="content-root">
-            <span class="content-span">{{bean.content}}</span>
-        </div>
-        <div class="scan-root">
-            <span ><img src="../assets/scan.png" alt="">12</span>
-            <span ><img src="../assets/awesome.png" alt="">30</span>
-            <span class="date">2019-11-21</span>
+            </a>
+            </div>
+            <div>
+                <div class="content-root">
+                    <span class="content-span">{{bean.content}}</span>
+                </div>
+                <div class="scan-root">
+                    <span ><img src="../assets/scan.png" alt="">12</span>
+                    <span ><img src="../assets/awesome.png" alt="">30</span>
+                </div>
+                <span class="date">2019-11-21</span>
+            </div>
         </div>
     </div>
 </template>
@@ -28,17 +33,31 @@ export default {
 @import "@/common/base";
 
 item-span {
-    font-size: 15px;
+    font-size: 14px;
     color: #999;
 }
 
 .item-root {
-    border-bottom: 1px solid $divide_line_color;
-    margin-top: 20px;
+    width: 100%;
+    height: 140px;
+    padding-top: 20px;
     padding-bottom: 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
+    border-bottom: 1px solid $divide_line_color;
+}
+
+.place-img {
+    width: 200px;
+    height: 140px;
+    margin-right: 10px;
+    border-radius: 6px;
+}
+
+.wrap-scan {
+    height: 140px;
+    position: relative;
 }
 
 .title-root {
@@ -91,15 +110,15 @@ item-span {
     /* 移动省略号位置 */
     position: relative;
     left: 100%;
-    top: -20px;
+    top: 15px;
     padding-right: 5px;
+    color: #999;
 }
 
 .scan-root {
-    width: 100%;
-    margin-top: 15px;
     display: flex;
-    position: relative;
+    position: absolute;
+    bottom: 0;
 
     span {
         @extend item-span;
@@ -119,12 +138,14 @@ item-span {
     img {
         width: 20px;
         height: 20px;
-        margin-right: 4px;
+        margin-right: 2px;
     }
+}
 
-    .date {
-        position: absolute;
-        right: 10px;
-    }
+.date {
+    @extend item-span;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
 }
 </style>
