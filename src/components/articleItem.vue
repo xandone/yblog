@@ -1,24 +1,26 @@
 <template>
     <div class="item-root">
-        <img class="place-img" src="../assets/head_icon.jpg" alt="">
-        <div class="wrap-scan">
-            <div class="title-root">
-                <a href="#">
-            <span class="title-span">{{bean.title}}</span>
-            </a>
-            </div>
-            <div>
-                <div class="content-root">
-                    <span class="content-span">{{bean.content}}</span>
+        <div>
+            <img class="place-img" src="../assets/head_icon.jpg" alt="">
+        </div>
+            <div class="wrap-scan">
+                <div class="title-root">
+                    <a :href="['/artDetails/'+bean.artId]">
+                    <span class="title-span">{{bean.title}}</span>
+                </a>
                 </div>
-                <div class="scan-root">
-                    <span ><img src="../assets/scan.png" alt="">12</span>
-                    <span ><img src="../assets/awesome.png" alt="">30</span>
+                <div>
+                    <div class="content-root">
+                        <span class="content-span">{{bean.content}}</span>
+                    </div>
+                    <div class="scan-root">
+                        <span ><img src="../assets/scan.png" alt="">12</span>
+                        <span ><img src="../assets/awesome.png" alt="">30</span>
+                    </div>
+                    <span class="date">2019-11-21</span>
                 </div>
-                <span class="date">2019-11-21</span>
             </div>
         </div>
-    </div>
 </template>
 <script>
 export default {

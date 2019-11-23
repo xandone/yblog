@@ -2,7 +2,7 @@
     <div id="topBar">
         <a href="/" class="blog-name"> <span >xandone</span></a>
         <div class="tab">
-            <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+            <el-menu :default-active="topbarIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
                 <el-menu-item index="1">首页</el-menu-item>
                 <el-menu-item index="2">编程</el-menu-item>
                 <el-menu-item index="3">杂文</el-menu-item>
@@ -13,11 +13,16 @@
     </div>
 </template>
 <script>
+// import setStore from "@/utils/utils"
+// import TOP_BAR_INDEX_KEY from "@/config/evn"
 export default {
     data() {
         return {
-            activeIndex: '1',
+            topbarIndex: '1',
         };
+    },
+    created() {
+
     },
     methods: {
         handleSelect(key) {
@@ -28,6 +33,12 @@ export default {
                     break;
                 case '2':
                     this.$router.push('/articleList');
+                    break;
+                case '3':
+                    this.$router.push('/essayList');
+                    break;
+                case '4':
+                    this.$router.push('/picList');
                     break;
                 case '5':
                     this.$router.push('/aboutMe');

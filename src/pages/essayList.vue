@@ -1,8 +1,9 @@
 <template>
     <div class="root">
-        首页
+        杂文
     </div>
 </template>
+<script></script>
 <style lang="scss">
 @import "@/common/base.scss";
 
