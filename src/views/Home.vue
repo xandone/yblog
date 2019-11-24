@@ -1,15 +1,14 @@
 <template>
     <div class="home-root">
-        <mainVue></mainVue>
+        <topBar></topBar>
+        <router-view></router-view>
     </div>
 </template>
 <script>
-import mainVue from '@/pages/main'
+import topBar from "@/components/topBar"
 export default {
     name: 'home',
-    components: {
-        mainVue,
-    }
+    components: { topBar }
 }
 </script>
 <style lang="scss">
@@ -19,5 +18,6 @@ export default {
     display: flex;
     justify-content: flex-start;
     width: 100%;
+    height: 100%;
 }
 </style>

@@ -1,11 +1,11 @@
 <template>
     <div class="item-root">
         <div>
-            <img class="place-img" src="../assets/head_icon.jpg" alt="">
+            <img :src="bean.coverImg" v-if="bean.coverImg" class="place-img" alt="">
         </div>
             <div class="wrap-scan">
                 <div class="title-root">
-                    <a :href="['/artDetails/'+bean.artId]">
+                    <a :href="['/artDetails/'+bean.artId]" target="_blank">
                     <span class="title-span">{{bean.title}}</span>
                 </a>
                 </div>
@@ -14,10 +14,10 @@
                         <span class="content-span">{{bean.content}}</span>
                     </div>
                     <div class="scan-root">
-                        <span ><img src="../assets/scan.png" alt="">12</span>
-                        <span ><img src="../assets/awesome.png" alt="">30</span>
+                        <span ><img src="../assets/scan.png" alt="">{{bean.artCommentCount}}</span>
+                        <span ><img src="../assets/awesome.png" alt="">{{bean.artCommentCount}}</span>
                     </div>
-                    <span class="date">2019-11-21</span>
+                    <span class="date">{{bean.postTime}}</span>
                 </div>
             </div>
         </div>

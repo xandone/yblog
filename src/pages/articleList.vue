@@ -15,23 +15,47 @@ export default {
 
     data() {
         return {
-            tableData: []
+            tableData: [],
+            page: 1,
+            row: 10,
         }
     },
     mounted() {
         this.getArticleList();
     },
     methods: {
-        getArticleList() {
-            for (let i = 0; i < 30; i++) {
-                const table = {};
-                table.index = i;
-                table.title = "几点回家福克斯的恢复开始的会计师";
-                table.content = "的开发技术的开放接口适得府君书肯德基福克斯的经费可适当加咖啡就开始独领风骚东方嘉盛离开的飞机开连锁店解放路可视对讲分开了的开发技术的开放接口适得府君书肯德基福克斯的经费可适当加咖啡就开始独领风骚东方嘉盛离开的飞机开连锁店解放路可视对讲分开了的开发技术的开放接口适得府君书肯德基福克斯的经费可适当加咖啡就开始独领风骚东方嘉盛离开的飞机开连锁店解放路可视对讲分开了";
+        getArticleList(tag) {
+            this.$axios.get(`/art/artlist`, {
+                    params: {
+                        page: this.page,
+                        row: this.row,
+                        tag: tag,
+                    }
+                })
+                .then((response) => {
+                    const joker = response.data;
+                    const data = joker.data;
+                    // this.tableData = [];
+                    data.forEach(item => {
+                        const tableData = {};
+                        tableData.title = item.title;
+                        tableData.artCommentCount = item.artCommentCount;
+                        tableData.content = item.content;
+                        tableData.contentHtml = item.contentHtml;
+                        tableData.coverImg = item.coverImg;
+                        tableData.artId = item.artId;
+                        // tableData.jokeUserIcon = item.jokeUserIcon;
+                        tableData.artUserId = item.artUserId;
+                        // tableData.jokeUserNick = item.jokeUserNick;
+                        tableData.postTime = item.postTime;
+                        this.tableData.push(tableData);
+                    })
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
 
-                this.tableData.push(table);
-            }
-        }
+        },
     }
 
 }
@@ -40,13 +64,19 @@ export default {
 @import "@/common/base.scss";
 
 .article-root {
-     margin-top: $topbarHeight;
-     position: absolute;
+    width: $root_width_value;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: $topbarHeight;
+    background-color: white;
 }
 
 .content {
-    width: 60%;
+    width: 100%;
     height: 100%;
     margin: 0 auto;
+    padding: 10px;
+    background-color: white;
+
 }
 </style>

@@ -3,7 +3,7 @@
         <div class="content-bg">
             <span class="art-title">{{artDetails.title}}</span>
             <div class="art-user-info">
-                <span @click="toUserView">{{artDetails.title}}</span>
+                <span>xandone</span>
                 <span>{{artDetails.postTime}}</span>
             </div>
             <div class="art-content" v-html="artDetails.contentHtml"></div>
@@ -29,11 +29,9 @@ export default {
     computed: {},
 
     methods: {
-        toUserView() {
-            this.$router.push('/aboutMe');
-        },
         getArtDetails() {
-            this.$axios.get(`/art/artlist`, {
+            console.log("artId=" + this.artId);
+            this.$axios.get(`/art/artDetails`, {
                     params: {
                         artId: this.artId
                     }
@@ -57,8 +55,12 @@ export default {
 .details-root {
     width: $root_width_value;
     height: 100%;
+    background-color: white;
     margin: 0 auto;
-    padding-top: 55px;
+
+    img {
+        max-width: 100%;
+    }
 }
 
 .content-bg {
@@ -77,15 +79,16 @@ export default {
     .art-user-info {
         text-align: center;
 
-        span {
-            font-size: 13px;
-            color: #999;
+        span:nth-child(1) {
+            font-size: 18px;
+            margin-right: 10px;
+            color: $text_yellow;
+            cursor: default;
         }
 
-        span:nth-child(1) {
-            margin-right: 10px;
-            color: $text_blue;
-            cursor: default;
+        span:nth-child(2) {
+            font-size: 13px;
+            color: #999;
         }
     }
 

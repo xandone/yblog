@@ -1,6 +1,5 @@
 <template>
     <div id="app" class="fill">
-        <topBar></topBar>
         <router-view />
     </div>
 </template>
