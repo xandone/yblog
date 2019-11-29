@@ -6,33 +6,13 @@
                 <el-menu-item index="1">首页</el-menu-item>
                 <el-menu-item index="2">编程</el-menu-item>
                 <el-menu-item index="3">杂文</el-menu-item>
-                <el-menu-item index="4">图片</el-menu-item>
-                <el-menu-item index="5">关于</el-menu-item>
-            </el-menu>
-        </div>
-        <div class="tab">
-            <el-menu :default-active="topbarIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
-                <el-menu-item index="1">首页</el-menu-item>
-                <el-menu-item index="2">编程</el-menu-item>
-                <el-menu-item index="3">杂文</el-menu-item>
-                <el-menu-item index="4">图片</el-menu-item>
-                <el-menu-item index="5">关于</el-menu-item>
-            </el-menu>
-        </div>
-        <div class="tab">
-            <el-menu :default-active="topbarIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
-                <el-menu-item index="1">首页</el-menu-item>
-                <el-menu-item index="2">编程</el-menu-item>
-                <el-menu-item index="3">杂文</el-menu-item>
-                <el-menu-item index="4">图片</el-menu-item>
-                <el-menu-item index="5">关于</el-menu-item>
+                <el-menu-item index="4">关于</el-menu-item>
             </el-menu>
         </div>
     </div>
 </template>
 <script>
-// import setStore from "@/utils/utils"
-// import TOP_BAR_INDEX_KEY from "@/config/evn"
+import vueEvent from '@/bus/vueEvent.js'
 export default {
     data() {
         return {
@@ -40,7 +20,10 @@ export default {
         };
     },
     created() {
-
+        var _this = this;
+        vueEvent.$on('index', function(key) {
+            _this.topbarIndex = key;
+        });
     },
     methods: {
         handleSelect(key) {
@@ -55,9 +38,6 @@ export default {
                     this.$router.push('/essayList');
                     break;
                 case '4':
-                    this.$router.push('/picList');
-                    break;
-                case '5':
                     this.$router.push('/aboutMe');
                     break;
             }

@@ -4,10 +4,14 @@
     </div>
 </template>
 <script type="text/javascript">
+import vueEvent from '@/bus/vueEvent.js'
 export default {
     props: {},
     data() {
         return {}
+    },
+    created() {
+        vueEvent.$emit('index', '1');
     },
     mounted() {},
     methods: {

@@ -17,11 +17,15 @@
 </template>
 <script type="text/javascript">
 import essayItem from "../components/essayItem.vue"
+import vueEvent from '@/bus/vueEvent.js'
 export default {
     props: {
         ban: {
             type: Object
         }
+    },
+    created() {
+        vueEvent.$emit('index', '3');
     },
     data() {
         return {

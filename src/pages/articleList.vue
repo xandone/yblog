@@ -7,6 +7,7 @@
 </template>
 <script>
 import articleItem from '@/components/articleItem'
+import vueEvent from '@/bus/vueEvent.js'
 
 export default {
     components: {
@@ -19,6 +20,9 @@ export default {
             page: 1,
             row: 10,
         }
+    },
+    created() {
+        vueEvent.$emit('index', '2');
     },
     mounted() {
         this.getArticleList();

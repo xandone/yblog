@@ -22,7 +22,14 @@
         </div>
     </div>
 </template>
-<script></script>
+<script>
+import vueEvent from '@/bus/vueEvent.js'
+export default {
+    created() {
+        vueEvent.$emit('index', '4');
+    },
+}
+</script>
 <style lang="scss">
 @import "@/common/base";
 
