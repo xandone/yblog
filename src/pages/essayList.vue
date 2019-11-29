@@ -13,7 +13,7 @@
         <div class="essay-item">
             <essayItem v-for="item in tableData" :bean='item'></essayItem>
         </div>
-        </div>
+    </div>
 </template>
 <script type="text/javascript">
 import essayItem from "../components/essayItem.vue"
@@ -62,7 +62,8 @@ export default {
 
         },
         getArticleList(tag) {
-            this.$axios.get(`/art/artlist`, {
+            let that = this;
+            this.$axios.get(`/essay/essaylist`, {
                     params: {
                         page: this.page,
                         row: this.row,
@@ -76,13 +77,13 @@ export default {
                     data.forEach(item => {
                         const tableData = {};
                         tableData.title = item.title;
-                        tableData.artCommentCount = item.artCommentCount;
+                        tableData.essayCommentCount = item.essayCommentCount;
                         tableData.content = item.content;
                         tableData.contentHtml = item.contentHtml;
                         tableData.coverImg = item.coverImg;
-                        tableData.artId = item.artId;
+                        tableData.essayId = item.essayId;
                         // tableData.jokeUserIcon = item.jokeUserIcon;
-                        tableData.artUserId = item.artUserId;
+                        tableData.essayUserId = item.essayUserId;
                         // tableData.jokeUserNick = item.jokeUserNick;
                         tableData.postTime = item.postTime;
                         this.tableData.push(tableData);
@@ -137,7 +138,5 @@ export default {
 .essay-item {
     width: 100%;
     background-color: white;
-    padding: 10px;
 }
-
 </style>

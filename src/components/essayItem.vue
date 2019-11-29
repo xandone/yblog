@@ -1,27 +1,27 @@
 <template>
     <div class="essay-item-root">
         <div>
-            <img :src="bean.coverImg" v-if="false" class="essay-place-img" alt="">
+            <img :src="imgArr[0]" v-if="isShowLeft" class="essay-place-img" alt="">
         </div>
             <div class="essay-wrap-scan">
                 <div class="essay-title-root">
                     <a :href="['/artDetails/'+bean.artId]" target="_blank">
-                    <span class="essay-title-span">{{bean.title}}</span>
+                <span class="essay-title-span">{{bean.title}}</span>
                 </a>
                 </div>
                 <div>
                     <div class="essay-content-root">
                         <span class="essay-content-span">{{bean.content}}</span>
                     </div>
-                    <div class="essay-scan-root">
-                        <span ><img src="../assets/scan.png" alt="">{{bean.artCommentCount}}</span>
-                        <span ><img src="../assets/awesome.png" alt="">{{bean.artCommentCount}}</span>
+                    <div class="essay-img" v-if="isShowBottom">
+                        <img  v-for="item in imgArr" alt="" :src="item" v-if="isShowBottom">
                     </div>
-                    <span class="essay-date">{{bean.postTime}}</span>
-                </div>
-                <div class="essay-img">
-                    <img  :src="bean.coverImg" alt="" v-if="true">
-                </div>
+                        <div class="essay-scan-root">
+                            <span ><img src="../assets/scan.png" alt="">{{bean.essayCommentCount}}</span>
+                            <span ><img src="../assets/awesome.png" alt="">{{bean.essayCommentCount}}</span>
+                        </div>
+                        <span class="essay-date">{{bean.postTime}}</span>
+                    </div>
                 </div>
             </div>
 </template>
@@ -32,6 +32,32 @@ export default {
             type: Object
         }
     },
+
+    data() {
+        return {
+            isShowLeft: false,
+            isShowBottom: false,
+            imgArr: [],
+        }
+    },
+
+    created() {
+        this.checkShowLeft(this.bean.coverImg);
+        this.checkShowBottom(this.bean.coverImg);
+    },
+    methods: {
+        checkShowBottom(jsonImgArr) {
+            let jsarr = JSON.parse(jsonImgArr);
+            this.isShowBottom = jsarr.length >= 3;
+            this.imgArr = jsarr;
+        },
+
+        checkShowLeft(jsonImgArr) {
+            let jsarr = JSON.parse(jsonImgArr);
+            this.isShowLeft = jsarr.length == 1 || jsarr.length == 2;
+            this.imgArr = jsarr;
+        }
+    }
 }
 </script>
 <style lang="scss">
@@ -44,7 +70,7 @@ item-span {
 
 .essay-item-root {
     width: 100%;
-    min-height: 140xp;
+    min-height: 140px;
     padding-top: 20px;
     padding-bottom: 20px;
     display: flex;
@@ -63,6 +89,7 @@ item-span {
 .essay-wrap-scan {
     // min-height: 140px;
     position: relative;
+    padding-bottom: 30px;
 }
 
 .essay-title-root {
@@ -81,9 +108,9 @@ item-span {
 }
 
 .essay-content-root {
-    text-align: left;
     height: 75px;
     line-height: 25px;
+    text-align: left;
     overflow: hidden;
 
     span {
@@ -156,12 +183,12 @@ item-span {
 
 .essay-img {
     display: flex;
-    margin-bottom: 20px;
 
     img {
         width: 180px;
         height: 120px;
         border-radius: 4px;
+        margin-right: 10px;
     }
 }
 </style>
