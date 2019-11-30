@@ -7,7 +7,7 @@
                 <span>{{artDetails.postTime}}</span>
             </div>
             <div class="art-content" v-html="artDetails.contentHtml"></div>
-            <comments :isShowComment="true" :jokeId="jokeId" :minRows='3' :maxRows='6' class="details-comment"></comments>
+            <comments :isShowComment="true" :artId="artId" :minRows='3' :maxRows='6' class="details-comment"></comments>
         </div>
     </div>
 </template>
@@ -95,12 +95,21 @@ export default {
     .art-content {
         height: 100%;
         text-align: left;
-        padding: 0 30px 30px 30px;
+        padding: 0 20px 20px 20px;
         border-bottom: 1px solid #f0f0f0;
+        line-height: 30px;
     }
 
     .details-comment {
         padding: 0 30px 50px 30px;
     }
+}
+
+code {
+    font-size: 16px;
+}
+
+pre{
+    background-color: #f6f6f6;
 }
 </style>

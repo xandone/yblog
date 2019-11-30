@@ -5,16 +5,19 @@
             <div v-for='item in commentData' class="comment-info-root">
                 <div class="comment-user-info">
                     <div>
-                        <img :src="item.commentIcon===null?require(`@/assets/head_icon.jpg`):item.commentIcon" alt="" class="comment-ic" @click="toUserView(item)">
+                        <img :src="item.commentIcon===null?require(`@/assets/user_boy.png`):item.commentIcon" alt="" class="comment-ic" @click="toUserView(item)">
                         <span style="cursor: default" @click="toUserView(item)">{{item.commentNick}}</span>
+                        <span class="comment-browser-version">chrome/78.0.3904.108</span>
                     </div>
                 </div>
                 <div class="conment-detail">
                     <span >{{item.commentDetails}}</span>
                 </div>
-                <span class="comment-date">
+                <div class="comment-date">
+                    <span >
                             {{item.commentDate}}
-                </span>
+                    </span>
+                </div>
             </div>
         </div>
         <div class="Pagination" style="text-align: left;margin-top: 10px;">
@@ -29,10 +32,11 @@
     </div>
 </template>
 <script>
+import { getBrowserInfo } from '@/utils/simpleUtils'
 export default {
     props: {
         isShowComment: false,
-        jokeId: { type: String },
+        artId: { type: String },
         minRows: { type: Number },
         maxRows: { type: Number },
     },
@@ -65,50 +69,46 @@ export default {
             this.page = val;
         },
         getJokeComments() {
-            // this.$axios.get(`/joke/comment/list`, {
-            //         params: {
-            //             page: this.page,
-            //             row: this.row,
-            //             jokeId: this.jokeId
-            //         }
-            //     })
-            //     .then((response) => {
-            //         const joker = response.data;
-            //         const data = joker.data;
-            //         this.count = joker.total;
-            //         this.commentData = [];
-            //         data.forEach(item => {
-            //             const tableData = {};
-            //             tableData.commentDate = item.commentDate;
-            //             tableData.commentDetails = item.commentDetails;
-            //             tableData.commentIcon = item.commentIcon;
-            //             tableData.commentId = item.commentId;
-            //             tableData.commentNick = item.commentNick;
-            //             tableData.commentUserId = item.commentUserId;
-            //             tableData.jokeId = item.jokeId;
+            this.$axios.get(`/comment/list`, {
+                    params: {
+                        page: this.page,
+                        row: this.row,
+                        artId: this.artId
+                    }
+                })
+                .then((response) => {
+                    const art = response.data;
+                    const data = art.data;
+                    this.count = art.total;
+                    this.commentData = [];
+                    data.forEach(item => {
+                        const tableData = {};
+                        tableData.commentDate = item.commentDate;
+                        tableData.commentDetails = item.commentDetails;
+                        tableData.commentIcon = item.commentIcon;
+                        tableData.commentId = item.commentId;
+                        tableData.commentNick = item.commentNick;
+                        tableData.commentNick = "网友";
+                        tableData.commentUserId = item.commentUserId;
+                        tableData.artId = item.artId;
 
-            //             this.commentData.push(tableData);
-            //         })
-            //     })
-            //     .catch((error) => {
-            //         console.log(error);
-            //     });
-            console.log("come..");
+                        this.commentData.push(tableData);
+                    })
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
 
         },
         addComment() {
-            if (!this.userInfo) {
-                alert('请先登录');
-                return;
-            }
             if (!this.details) {
                 alert('请输入回复内容');
                 return;
             }
-            this.$axios.post(`/joke/comment/add`,
+            let ssss = getBrowserInfo();
+            this.$axios.post(`/comment/add`,
                     this.$qs.stringify({
-                        'jokeId': this.jokeId,
-                        'userId': this.userInfo.userId,
+                        'artId': this.artId,
                         'details': this.details,
                     }))
 
@@ -120,6 +120,7 @@ export default {
                         tableData.commentDetails = data.commentDetails;
                         tableData.commentIcon = data.commentIcon;
                         tableData.commentNick = data.commentNick;
+                        tableData.commentNick = "网友";
                         tableData.commentDate = data.commentDate;
                         this.commentData.unshift(tableData);
                         this.count++;
@@ -190,17 +191,24 @@ export default {
             color: #555;
         }
     }
+
+    .comment-browser-version {
+        font-size: 13px;
+        color: #aaa;
+    }
 }
 
 .comment-date {
     font-size: 13px;
     color: #bbb;
     padding-left: 40px;
+    text-align: left;
 }
 
 .conment-detail {
     font-size: 14px;
     color: #333;
     padding: 10px 40px;
+    text-align: left;
 }
 </style>
