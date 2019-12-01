@@ -34,8 +34,8 @@ export default {
 @import "@/common/base";
 
 user-span {
-    font-size: 15px;
-    color: #999;
+    font-size: 18px;
+    color: #333;
 }
 
 .about {
@@ -59,25 +59,26 @@ user-span {
     }
 
     .user-name {
-        font-size: 30px;
+        font-size: 40px;
         font-weight: bold;
     }
 
     .user-info {
-        margin-top: 10px;
+        margin-top: 20px;
     }
 
     .info-img {
-        width: 20px;
-        height: 20px;
+        width: 25px;
+        height: 25px;
     }
 
     .github-span {
         display: flex;
+        align-items: center;
 
         span {
             @extend user-span;
-            margin-left: 6px;
+            margin-left: 10px;
             color: $text_blue;
         }
     }
@@ -89,7 +90,7 @@ user-span {
         margin-top: 5px;
 
         span {
-            margin-left: 6px;
+            margin-left: 10px;
         }
     }
 }
