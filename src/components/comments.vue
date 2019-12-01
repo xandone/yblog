@@ -7,7 +7,7 @@
                     <div>
                         <img :src="item.commentIcon===null?require(`@/assets/user_boy.png`):item.commentIcon" alt="" class="comment-ic" @click="toUserView(item)">
                         <span style="cursor: default" @click="toUserView(item)">{{item.commentNick}}</span>
-                        <span class="comment-browser-version">chrome/78.0.3904.108</span>
+                        <span class="comment-browser-version">{{item.commentUserVer}}</span>
                     </div>
                 </div>
                 <div class="conment-detail">
@@ -69,11 +69,12 @@ export default {
             this.page = val;
         },
         getJokeComments() {
+            console.log(this.artId);
             this.$axios.get(`/comment/list`, {
                     params: {
                         page: this.page,
                         row: this.row,
-                        artId: this.artId
+                        artId: this.artId,
                     }
                 })
                 .then((response) => {
@@ -85,6 +86,7 @@ export default {
                         const tableData = {};
                         tableData.commentDate = item.commentDate;
                         tableData.commentDetails = item.commentDetails;
+                        tableData.commentUserVer = item.commentUserVer;
                         tableData.commentIcon = item.commentIcon;
                         tableData.commentId = item.commentId;
                         tableData.commentNick = item.commentNick;
@@ -105,11 +107,12 @@ export default {
                 alert('请输入回复内容');
                 return;
             }
-            let ssss = getBrowserInfo();
+            let commentUserVer = getBrowserInfo();
             this.$axios.post(`/comment/add`,
                     this.$qs.stringify({
                         'artId': this.artId,
                         'details': this.details,
+                        'commentUserVer': commentUserVer[0],
                     }))
 
                 .then((response) => {
@@ -118,6 +121,7 @@ export default {
                         const data = result.data[0];
                         const tableData = {};
                         tableData.commentDetails = data.commentDetails;
+                        tableData.commentUserVer = data.commentUserVer;
                         tableData.commentIcon = data.commentIcon;
                         tableData.commentNick = data.commentNick;
                         tableData.commentNick = "网友";

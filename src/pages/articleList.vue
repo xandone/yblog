@@ -44,6 +44,7 @@ export default {
                         const tableData = {};
                         tableData.title = item.title;
                         tableData.artCommentCount = item.artCommentCount;
+                        tableData.artBrowseCount = item.artBrowseCount;
                         tableData.content = item.content;
                         tableData.contentHtml = item.contentHtml;
                         tableData.coverImg = item.coverImg;

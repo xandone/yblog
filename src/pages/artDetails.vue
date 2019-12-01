@@ -18,7 +18,7 @@ export default {
     data() {
         return {
             artId: this.$route.params.artId,
-            artDetails: {}
+            artDetails: {},
         }
     },
 
@@ -109,7 +109,7 @@ code {
     font-size: 16px;
 }
 
-pre{
+pre {
     background-color: #f6f6f6;
 }
 </style>
