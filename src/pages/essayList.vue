@@ -82,6 +82,7 @@ export default {
                         const tableData = {};
                         tableData.title = item.title;
                         tableData.essayCommentCount = item.essayCommentCount;
+                        tableData.essayBrowseCount = item.essayBrowseCount;
                         tableData.content = item.content;
                         tableData.contentHtml = item.contentHtml;
                         tableData.coverImg = item.coverImg;
@@ -141,6 +142,9 @@ export default {
 
 .essay-item {
     width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 10px;
     background-color: white;
 }
 </style>

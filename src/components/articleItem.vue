@@ -58,6 +58,7 @@ item-span {
 }
 
 .wrap-scan {
+    width: 100%;
     height: 140px;
     position: relative;
 }
@@ -78,6 +79,7 @@ item-span {
 }
 
 .content-root {
+    width: 100%;
     text-align: left;
     height: 75px;
     line-height: 25px;

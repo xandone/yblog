@@ -171,6 +171,7 @@ export default {
 
 .repaly-root {
     margin-top: 10px;
+    text-align: left;
 }
 
 .comment-ic {

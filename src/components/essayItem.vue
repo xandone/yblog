@@ -5,7 +5,7 @@
         </div>
             <div class="essay-wrap-scan">
                 <div class="essay-title-root">
-                    <a :href="['/artDetails/'+bean.artId]" target="_blank">
+                    <a :href="['/essayDetails/'+bean.essayId]" target="_blank">
                 <span class="essay-title-span">{{bean.title}}</span>
                 </a>
                 </div>
@@ -90,6 +90,7 @@ item-span {
     // min-height: 140px;
     position: relative;
     padding-bottom: 30px;
+    width: 100%;
 }
 
 .essay-title-root {
@@ -108,6 +109,7 @@ item-span {
 }
 
 .essay-content-root {
+    width: 100%;
     height: 75px;
     line-height: 25px;
     text-align: left;

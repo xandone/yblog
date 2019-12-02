@@ -8,6 +8,7 @@ import picList from '@/pages/picList'
 import essayList from '@/pages/essayList'
 import aboutMe from '../pages/aboutMe.vue'
 import artDetails from '@/pages/artDetails.vue'
+import essayDetails from '@/pages/essayDetails.vue'
 
 Vue.use(VueRouter)
 
@@ -43,5 +44,9 @@ export default new Router({
         path: '/artDetails/:artId',
         name: 'artDetails',
         component: artDetails,
+    }, {
+        path: '/essayDetails/:artId',
+        name: 'essayDetails',
+        component: essayDetails,
     }, ]
 });

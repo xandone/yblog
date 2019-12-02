@@ -30,9 +30,10 @@ export default {
 
     methods: {
         getArtDetails() {
-            this.$axios.get(`/art/artDetails`, {
+            console.log(11111111112222);
+            this.$axios.get(`/essay/essayDetails`, {
                     params: {
-                        artId: this.artId
+                        essayId: this.artId
                     }
                 })
                 .then((response) => {
