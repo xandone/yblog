@@ -12,11 +12,11 @@
                 </a>
                 <div class="mail-span">
                     <img class="info-img" src="../assets/mails.png" alt="">
-                    <span >765478955@qq.com</span>
+                    <span >{{adminInfo.email}}</span>
                 </div>
                 <div class="mail-span">
                     <img class="info-img" src="../assets/record.png" alt="">
-                    <span >18篇</span>
+                    <span >{{adminInfo.totalArts}}篇</span>
                 </div>
             </div>
         </div>
@@ -25,9 +25,29 @@
 <script>
 import vueEvent from '@/bus/vueEvent.js'
 export default {
+    data() {
+        return {
+            adminInfo:{},
+        }
+    },
     created() {
         vueEvent.$emit('index', '4');
+        this.getAdminInfo();
     },
+    methods: {
+        getAdminInfo() {
+            this.$axios.get(`/admin/userInfo`)
+                .then((response) => {
+                    const result = response.data;
+                    const item = result.data[0];
+                    this.adminInfo = {};
+                    this.adminInfo = item;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+    }
 }
 </script>
 <style lang="scss">
