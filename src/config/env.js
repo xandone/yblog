@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 let baseUrl = '//xandone.pub/yblog';
+=======
+let baseUrl = '//localhost:8081/yblog';
+>>>>>>> ec4474ac36d905b29de512dd35fb0cc747b1b5f9
 
 let baseImgPath = '/img/';
 
