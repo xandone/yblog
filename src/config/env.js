@@ -1,4 +1,4 @@
-let baseUrl = '//www.xandone.pub:8081/yblog';
+let baseUrl = '//xandone.pub/yblog';
 
 let baseImgPath = '/img/';
 

@@ -107,6 +107,7 @@ export default {
 @import "@/common/base.scss";
 
 .essay-root {
+    padding: 10px;
     width: $root_width_value;
     height: 100%;
     margin-top: $topbarHeight;
@@ -144,7 +145,6 @@ export default {
     width: 100%;
     height: 100%;
     margin: 0 auto;
-    padding: 10px;
     background-color: white;
 }
 </style>
