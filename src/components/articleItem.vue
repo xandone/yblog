@@ -8,6 +8,7 @@
                     <a :href="['/artDetails/'+bean.artId]" target="_blank">
                     <span class="title-span">{{bean.title}}</span>
                 </a>
+                    <span class="art-type">计算机</span>
                 </div>
                 <div>
                     <div class="content-root">
@@ -41,7 +42,7 @@ item-span {
 
 .item-root {
     width: 100%;
-    height: 140px;
+    min-height: 140px;
     padding-top: 20px;
     padding-bottom: 20px;
     display: flex;
@@ -65,6 +66,9 @@ item-span {
 
 .title-root {
     display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
 
     .title-span {
         font-weight: bold;
@@ -73,10 +77,15 @@ item-span {
         overflow: hidden;
         white-space: nowrap;
         display: inline-block;
-        width: 500px;
         text-align: left;
     }
+
+    .art-type {
+        font-size: 12px;
+        color: $text_yellow;
+    }
 }
+
 
 .content-root {
     width: 100%;
