@@ -49,7 +49,7 @@ export default {
                         tableData.contentHtml = item.contentHtml;
                         tableData.coverImg = item.coverImg;
                         tableData.artId = item.artId;
-                        // tableData.jokeUserIcon = item.jokeUserIcon;
+                        tableData.typeName = item.typeName;
                         tableData.artUserId = item.artUserId;
                         // tableData.jokeUserNick = item.jokeUserNick;
                         tableData.postTime = item.postTime;

@@ -8,7 +8,7 @@
                     <a :href="['/artDetails/'+bean.artId]" target="_blank">
                     <span class="title-span">{{bean.title}}</span>
                 </a>
-                    <span class="art-type">计算机</span>
+                    <span class="art-type">{{bean.typeName}}</span>
                 </div>
                 <div>
                     <div class="content-root">
@@ -81,7 +81,8 @@ item-span {
     }
 
     .art-type {
-        font-size: 12px;
+        font-size: 13px;
+        margin-right: 10px;
         color: $text_yellow;
     }
 }

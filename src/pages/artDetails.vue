@@ -2,8 +2,8 @@
     <div class="details-root">
         <div class="content-bg">
             <span class="art-title">{{artDetails.title}}</span>
-            <div class="art-user-info">
-                <span>xandone</span>
+            <div class="dart-user-info">
+                <span>{{artDetails.typeName}}</span>
                 <span>{{artDetails.postTime}}</span>
             </div>
             <div class="art-content" v-html="artDetails.contentHtml"></div>
@@ -75,18 +75,17 @@ export default {
         display: block;
     }
 
-    .art-user-info {
+    .dart-user-info {
         text-align: center;
+        font-size: 13px;
 
         span:nth-child(1) {
-            font-size: 18px;
             margin-right: 10px;
             color: $text_yellow;
             cursor: default;
         }
 
         span:nth-child(2) {
-            font-size: 13px;
             color: #999;
         }
     }

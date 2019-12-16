@@ -1,6 +1,6 @@
 <template>
     <div class="main-root">
-        <img src="../assets/bg.jpg" alt="">
+        <img src="http://www.xandone.pub/mainbg" alt="">
     </div>
 </template>
 <script type="text/javascript">
