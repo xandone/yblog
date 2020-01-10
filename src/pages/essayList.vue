@@ -107,7 +107,6 @@ export default {
 @import "@/common/base.scss";
 
 .essay-root {
-    padding: 10px;
     width: $root_width_value;
     height: 100%;
     margin-top: $topbarHeight;
@@ -120,6 +119,8 @@ export default {
     width: 100%;
     color: #475669;
     margin: 0 auto;
+    padding: 10px;
+    background-color: white;
 
     .banner-ic {
         width: 100%;
@@ -146,5 +147,6 @@ export default {
     height: 100%;
     margin: 0 auto;
     background-color: white;
+    padding: 10px;
 }
 </style>

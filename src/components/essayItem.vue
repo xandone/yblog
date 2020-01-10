@@ -185,6 +185,7 @@ item-span {
 
 .essay-img {
     display: flex;
+    margin-top: 4px;
 
     img {
         width: 180px;

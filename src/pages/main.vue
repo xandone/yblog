@@ -26,7 +26,6 @@ export default {
 .main-root {
     width: 100%;
     height: 100%;
-    margin-top: $topbarHeight;
     position: absolute;
 
     img {
