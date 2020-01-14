@@ -1,22 +1,28 @@
 <template>
     <div class="article-root">
-        <div class="content">
+        <div class="art-tag">
+            <artTag @clickTag="searchByTag"></artTag>
+        </div>
+        <div class="article-content">
             <articleItem v-for="item in tableData " :bean='item' v-bind:key='item.index'></articleItem>
         </div>
     </div>
 </template>
 <script>
 import articleItem from '@/components/articleItem'
+import artTag from '@/components/artTag'
 import vueEvent from '@/bus/vueEvent.js'
 
 export default {
     components: {
-        articleItem
+        articleItem,
+        artTag
     },
 
     data() {
         return {
             tableData: [],
+            tagList: [],
             page: 1,
             row: 10,
         }
@@ -28,18 +34,18 @@ export default {
         this.getArticleList();
     },
     methods: {
-        getArticleList(tag) {
+        getArticleList(type) {
             this.$axios.get(`/art/artlist`, {
                     params: {
                         page: this.page,
                         row: this.row,
-                        tag: tag,
+                        type: type,
                     }
                 })
                 .then((response) => {
-                    const joker = response.data;
-                    const data = joker.data;
-                    // this.tableData = [];
+                    const artBean = response.data;
+                    const data = artBean.data;
+                    this.tableData = [];
                     data.forEach(item => {
                         const tableData = {};
                         tableData.title = item.title;
@@ -51,7 +57,6 @@ export default {
                         tableData.artId = item.artId;
                         tableData.typeName = item.typeName;
                         tableData.artUserId = item.artUserId;
-                        // tableData.jokeUserNick = item.jokeUserNick;
                         tableData.postTime = item.postTime;
                         this.tableData.push(tableData);
                     })
@@ -61,6 +66,12 @@ export default {
                 });
 
         },
+
+        searchByTag(type) {
+            console.log(type);
+            this.page = 1;
+            this.getArticleList(type);
+        }
     }
 
 }
@@ -72,16 +83,20 @@ export default {
     width: $root_width_value;
     height: 100%;
     margin: 0 auto;
-    margin-top: $topbarHeight;
-    background-color: white;
 }
 
-.content {
-    width: 100%;
+.article-content {
     height: 100%;
-    margin: 0 auto;
-    padding: 10px;
+    margin-top: $topbarHeight;
     background-color: white;
+    padding: 10px;
+}
 
+.art-tag {
+    width: 15%;
+    margin-top: 15%;
+    position: fixed;
+    z-index: 10;
+    right: 2%;
 }
 </style>

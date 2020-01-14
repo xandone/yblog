@@ -116,11 +116,10 @@ export default {
 }
 
 .banner {
-    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
     color: #475669;
     margin: 0 auto;
-    padding: 10px;
-    background-color: white;
 
     .banner-ic {
         width: 100%;
@@ -143,10 +142,6 @@ export default {
 }
 
 .essay-item {
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    background-color: white;
     padding: 10px;
 }
 </style>
