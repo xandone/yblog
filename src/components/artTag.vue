@@ -1,11 +1,11 @@
 <template>
     <div class="tag-root">
-        <a v-for="item in tagList" @click="clickTag(item.type)" >
-            <div>
-              <span >{{item.typeName}}</span>
-              <span >({{item.count}})</span>  
+        <div class="art-tag-span" v-for="(item,index) in tagList" @click="clickTag(item.type,index)">
+            <div :class="index==indexMark?'active':'unactive'">
+                <span>{{item.typeName}}</span>
+                <span >({{item.count}})</span>
             </div>
-        </a>
+        </div>
     </div>
 </template>
 <script>
@@ -13,6 +13,7 @@ export default {
     data() {
         return {
             tagList: [],
+            indexMark: -1,
         }
     },
 
@@ -40,8 +41,9 @@ export default {
 
         },
 
-        clickTag(type) {
+        clickTag(type, index) {
             this.$emit('clickTag', type);
+            this.indexMark = index;
         }
     }
 }
@@ -53,21 +55,30 @@ export default {
 
     text-align: left;
 
-    a:link {
-        text-decoration: underline;
-    }
-
-    a {
+    .art-tag-span {
         display: inline-block;
+
+        div {
+            padding-left: 6px;
+            padding-right: 6px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            margin-left: 8px;
+            margin-top: 4px;
+            border: 0.5px solid $text_yellow;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+
     }
 
-    div {
-        padding-left: 6px;
-        padding-right: 6px;
-        margin-left: 6px;
-        margin-top: 4px;
-        border: 0.5px solid $text_yellow;
-        border-radius: 6px;
+    .active {
+        background-color: $text_yellow;
+    }
+
+    .unactive {
+        background-color: white;
     }
 
     span {

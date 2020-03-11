@@ -68,7 +68,6 @@ export default {
         },
 
         searchByTag(type) {
-            console.log(type);
             this.page = 1;
             this.getArticleList(type);
         }
@@ -93,8 +92,8 @@ export default {
 }
 
 .art-tag {
-    width: 15%;
-    margin-top: 15%;
+    width: 12%;
+    margin-top: $topbarHeight;
     position: fixed;
     z-index: 10;
     right: 2%;
