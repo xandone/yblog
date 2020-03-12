@@ -108,7 +108,7 @@ export default {
 
 .essay-root {
     width: $root_width_value;
-    height: 100%;
+    min-height: 100%;
     margin-top: $topbarHeight;
     position: relative;
     margin: 0 auto;
@@ -142,6 +142,7 @@ export default {
 }
 
 .essay-item {
+    height: 100%;
     padding: 10px;
 }
 </style>

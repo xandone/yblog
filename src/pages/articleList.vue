@@ -87,8 +87,9 @@ export default {
 .article-content {
     height: 100%;
     margin-top: $topbarHeight;
-    background-color: white;
     padding: 10px;
+    background-color: white;
+
 }
 
 .art-tag {

@@ -27,7 +27,7 @@ import vueEvent from '@/bus/vueEvent.js'
 export default {
     data() {
         return {
-            adminInfo:{},
+            adminInfo: {},
         }
     },
     created() {
@@ -51,7 +51,7 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "@/common/base";
+@import "@/common/base.scss";
 
 user-span {
     font-size: 18px;
@@ -59,14 +59,18 @@ user-span {
 }
 
 .about {
-    position: absolute;
-    left: 20%;
-    top: 20px;
+    width: $root_width_value;
+    height: 100%;
+    padding: 0;
+    margin: 0 auto;
+    position: relative;
+    background-color: white;
 }
 
 .user-root {
-    width: 100%;
-    height: 100%;
+    left: 2%;
+    top: 2%;
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,7 +88,7 @@ user-span {
     }
 
     .user-info {
-        margin-top: 20px;
+        margin-top: 18px;
     }
 
     .info-img {
@@ -98,7 +102,7 @@ user-span {
 
         span {
             @extend user-span;
-            margin-left: 10px;
+            margin-left: 2px;
             color: $text_blue;
         }
     }
@@ -110,7 +114,7 @@ user-span {
         margin-top: 5px;
 
         span {
-            margin-left: 10px;
+            margin-left: 2px;
         }
     }
 }

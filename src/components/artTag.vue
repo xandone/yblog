@@ -13,7 +13,7 @@ export default {
     data() {
         return {
             tagList: [],
-            indexMark: -1,
+            indexMark: 0,
         }
     },
 
@@ -27,13 +27,19 @@ export default {
                 .then((response) => {
                     const bean = response.data;
                     const data = bean.data;
+                    let allCount = 0;
                     data.forEach(item => {
                         const tagBean = {};
                         tagBean.typeName = item.typeName;
                         tagBean.count = item.count;
                         tagBean.type = item.type;
                         this.tagList.push(tagBean);
+                        allCount = allCount + item.count;
                     })
+                    const tempBean = {};
+                    tempBean.count = allCount;
+                    tempBean.typeName = "全部";
+                    this.tagList.unshift(tempBean);
                 })
                 .catch((error) => {
                     console.log(error);
@@ -64,7 +70,7 @@ export default {
             padding-top: 2px;
             padding-bottom: 2px;
             margin-left: 8px;
-            margin-top: 4px;
+            margin-top: 8px;
             border: 0.5px solid $text_yellow;
             border-radius: 2px;
             cursor: pointer;

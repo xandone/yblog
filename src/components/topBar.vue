@@ -57,12 +57,16 @@ export default {
 }
 
 .tab {
-    background-color: red;
     display: inline-block;
     height: $topbarHeight;
     position: absolute;
     right: 15%;
     bottom: 0;
+
+    .el-menu .el-menu-item {
+        height: $topbarHeight;
+        line-height: $topbarHeight;
+    }
 }
 
 .blog-name {
