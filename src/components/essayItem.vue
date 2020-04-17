@@ -17,7 +17,7 @@
                         <img  v-for="item in imgArr" alt="" :src="item" v-if="isShowBottom">
                     </div>
                         <div class="essay-scan-root">
-                            <span ><img src="../assets/scan.png" alt="">{{bean.essayBrowseCount}}</span>
+                           <!--  <span ><img src="../assets/scan.png" alt="">{{bean.essayBrowseCount}}</span> -->
                             <span ><img src="../assets/awesome.png" alt="">{{bean.essayCommentCount}}</span>
                         </div>
                         <span class="essay-date">{{bean.postTime}}</span>
@@ -170,8 +170,8 @@ item-span {
     }
 
     img {
-        width: 20px;
-        height: 20px;
+        width: 16px;
+        height: 16px;
         margin-right: 2px;
     }
 }

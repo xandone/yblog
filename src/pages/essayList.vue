@@ -3,7 +3,7 @@
         <div class="banner">
             <el-carousel :interval="3000" height="400px">
                 <el-carousel-item v-for="ban in bannerData">
-                    <a :href="ban.articleUrl" target="_blank">
+                    <a :href="['/essayDetails/'+ban.articelId]" target="_blank">
                         <span class="banner-title">{{ban.title}}</span>
                         <el-image class="banner-ic" :src="ban.imgUrl" ></el-image>
                     </a>
@@ -142,7 +142,7 @@ export default {
 }
 
 .essay-item {
-    height: 100%;
+    // height: 100%;
     padding: 10px;
 }
 </style>

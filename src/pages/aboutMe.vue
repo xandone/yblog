@@ -55,7 +55,8 @@ export default {
 
 user-span {
     font-size: 18px;
-    color: #333;
+    color: #555;
+    font-style:italic;
 }
 
 .about {
@@ -92,8 +93,8 @@ user-span {
     }
 
     .info-img {
-        width: 25px;
-        height: 25px;
+        width: 22px;
+        height: 22px;
     }
 
     .github-span {
@@ -102,7 +103,7 @@ user-span {
 
         span {
             @extend user-span;
-            margin-left: 2px;
+            margin-left: 10px;
             color: $text_blue;
         }
     }
@@ -114,7 +115,7 @@ user-span {
         margin-top: 5px;
 
         span {
-            margin-left: 2px;
+            margin-left: 10px;
         }
     }
 }

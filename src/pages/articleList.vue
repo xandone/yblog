@@ -80,7 +80,7 @@ export default {
 
 .article-root {
     width: $root_width_value;
-    height: 100%;
+    min-height: 100%;
     margin: 0 auto;
 }
 

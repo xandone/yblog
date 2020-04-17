@@ -15,7 +15,7 @@
                         <span class="content-span">{{bean.content}}</span>
                     </div>
                     <div class="scan-root">
-                        <span ><img src="../assets/scan.png" alt="">{{bean.artBrowseCount}}</span>
+                        <!-- <span ><img src="../assets/scan.png" alt="">{{bean.artBrowseCount}}</span> -->
                         <span ><img src="../assets/awesome.png" alt="">{{bean.artCommentCount}}</span>
                     </div>
                     <span class="date">{{bean.postTime}}</span>
@@ -150,8 +150,8 @@ item-span {
     }
 
     img {
-        width: 20px;
-        height: 20px;
+        width: 16px;
+        height: 16px;
         margin-right: 2px;
     }
 }
