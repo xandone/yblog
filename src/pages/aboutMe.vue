@@ -56,7 +56,7 @@ export default {
 user-span {
     font-size: 18px;
     color: #555;
-    font-style:italic;
+    font-style: italic;
 }
 
 .about {
@@ -81,6 +81,12 @@ user-span {
         width: 150px;
         height: 150px;
         border-radius: 50%;
+        transition-duration: 1.5s;
+        transition-timing-function: ease-out;
+    }
+
+    .user-icon:hover {
+        transform: rotateY(360deg);
     }
 
     .user-name {

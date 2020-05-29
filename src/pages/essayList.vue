@@ -5,7 +5,7 @@
                 <el-carousel-item v-for="ban in bannerData">
                     <a :href="['/essayDetails/'+ban.articelId]" target="_blank">
                         <span class="banner-title">{{ban.title}}</span>
-                        <el-image class="banner-ic" :src="ban.imgUrl" ></el-image>
+                        <el-image class="banner-ic" :src="ban.imgUrl" :fit="contain" ></el-image>
                     </a>
                 </el-carousel-item>
             </el-carousel>

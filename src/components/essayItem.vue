@@ -17,7 +17,7 @@
                         <img  v-for="item in imgArr" alt="" :src="item" v-if="isShowBottom">
                     </div>
                         <div class="essay-scan-root">
-                           <!--  <span ><img src="../assets/scan.png" alt="">{{bean.essayBrowseCount}}</span> -->
+                            <!--  <span ><img src="../assets/scan.png" alt="">{{bean.essayBrowseCount}}</span> -->
                             <span ><img src="../assets/awesome.png" alt="">{{bean.essayCommentCount}}</span>
                         </div>
                         <span class="essay-date">{{bean.postTime}}</span>
@@ -84,6 +84,11 @@ item-span {
     height: 140px;
     margin-right: 10px;
     border-radius: 6px;
+    transition: all 0.5s;
+}
+
+.essay-place-img:hover {
+    transform: scale(1.05);
 }
 
 .essay-wrap-scan {
@@ -192,6 +197,11 @@ item-span {
         height: 120px;
         border-radius: 4px;
         margin-right: 10px;
+        transition: all 0.5s;
+    }
+
+    img:hover {
+        transform: scale(1.05);
     }
 }
 </style>

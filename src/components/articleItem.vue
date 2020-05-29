@@ -56,6 +56,11 @@ item-span {
     height: 140px;
     margin-right: 10px;
     border-radius: 6px;
+    transition: all 0.5s;
+}
+
+.place-img:hover {
+    transform: scale(1.05);
 }
 
 .wrap-scan {

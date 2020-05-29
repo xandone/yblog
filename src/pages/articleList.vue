@@ -3,20 +3,23 @@
         <div class="art-tag">
             <artTag @clickTag="searchByTag"></artTag>
         </div>
-        <div class="article-content">
+        <div v-if="!isNodata" class="article-content">
             <articleItem v-for="item in tableData " :bean='item' v-bind:key='item.index'></articleItem>
         </div>
+        <nodata v-if="isNodata" />
     </div>
 </template>
 <script>
 import articleItem from '@/components/articleItem'
 import artTag from '@/components/artTag'
+import nodata from '@/components/nodata'
 import vueEvent from '@/bus/vueEvent.js'
 
 export default {
     components: {
         articleItem,
-        artTag
+        artTag,
+        nodata
     },
 
     data() {
@@ -25,6 +28,7 @@ export default {
             tagList: [],
             page: 1,
             row: 10,
+            isNodata: false
         }
     },
     created() {
@@ -47,19 +51,21 @@ export default {
                     const data = artBean.data;
                     this.tableData = [];
                     data.forEach(item => {
-                        const tableData = {};
-                        tableData.title = item.title;
-                        tableData.artCommentCount = item.artCommentCount;
-                        tableData.artBrowseCount = item.artBrowseCount;
-                        tableData.content = item.content;
-                        tableData.contentHtml = item.contentHtml;
-                        tableData.coverImg = item.coverImg;
-                        tableData.artId = item.artId;
-                        tableData.typeName = item.typeName;
-                        tableData.artUserId = item.artUserId;
-                        tableData.postTime = item.postTime;
-                        this.tableData.push(tableData);
+                        const bean = {};
+                        bean.title = item.title;
+                        bean.artCommentCount = item.artCommentCount;
+                        bean.artBrowseCount = item.artBrowseCount;
+                        bean.content = item.content;
+                        bean.contentHtml = item.contentHtml;
+                        bean.coverImg = item.coverImg;
+                        bean.artId = item.artId;
+                        bean.typeName = item.typeName;
+                        bean.artUserId = item.artUserId;
+                        bean.postTime = item.postTime;
+                        this.tableData.push(bean);
                     })
+                    this.isNodata = this.tableData.length == 0;
+                    console.log(this.isNodata);
                 })
                 .catch((error) => {
                     console.log(error);

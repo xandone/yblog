@@ -91,7 +91,9 @@ export default {
         font-size: 14px;
     }
 
-    span:nth-child(1) {}
+    span:nth-child(1) {
+        color: #999;
+    }
 
     span:nth-child(2) {
         color: $text_blue;
