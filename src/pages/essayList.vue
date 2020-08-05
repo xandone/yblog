@@ -128,16 +128,19 @@ export default {
 
     .banner-title {
         position: absolute;
-        width: 160px;
+        width: 200px;
         bottom: 10px;
         right: 10px;
         color: #eee;
         font-size: 14px;
         z-index: 2;
-        white-space: nowrap;
+        font-style: italic;
         text-overflow: ellipsis;
         overflow: hidden;
+        white-space: nowrap;
+        display: inline-block;
         text-align: right;
+        padding-right: 10px;
     }
 }
 

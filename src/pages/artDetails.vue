@@ -67,16 +67,18 @@ export default {
     background-color: white;
 
     .art-title {
-        font-size: 22px;
-        font-weight: 600;
         width: 100%;
-        text-align: center;
+        text-align: left;
         padding: 20px 0;
         display: block;
+        font-size: 28px;
+        font-weight: 600;
+        margin-left: 20px;
     }
 
     .dart-user-info {
-        text-align: center;
+        text-align: left;
+        margin-left: 20px;
         font-size: 13px;
 
         span:nth-child(1) {

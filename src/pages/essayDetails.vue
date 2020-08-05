@@ -1,13 +1,13 @@
 <template>
     <div class="details-root">
         <div class="content-bg">
-            <span class="art-title">{{artDetails.title}}</span>
-            <div class="art-user-info">
+            <span class="essay-title">{{artDetails.title}}</span>
+            <div class="essay-user-info">
                 <span>xandone</span>
                 <span>{{artDetails.postTime}}</span>
             </div>
-            <div class="art-content" v-html="artDetails.contentHtml"></div>
-            <comments :isShowComment="true" :artId="artId" :minRows='3' :maxRows='6' class="details-comment"></comments>
+            <div class="essay-content" v-html="artDetails.contentHtml"></div>
+            <comments :isShowComment="true" :artId="artId" :minRows='3' :maxRows='6' class="essay-details-comment"></comments>
         </div>
     </div>
 </template>
@@ -67,8 +67,8 @@ export default {
     padding: 10px;
     background-color: white;
 
-    .art-title {
-        font-size: 22px;
+    .essay-title {
+        font-size: 28px;
         font-weight: 600;
         width: 100%;
         text-align: center;
@@ -76,7 +76,7 @@ export default {
         display: block;
     }
 
-    .art-user-info {
+    .essay-user-info {
         text-align: center;
 
         span:nth-child(1) {
@@ -92,7 +92,7 @@ export default {
         }
     }
 
-    .art-content {
+    .essay-content {
         height: 100%;
         text-align: left;
         padding: 0 20px 20px 20px;
@@ -100,7 +100,7 @@ export default {
         line-height: 30px;
     }
 
-    .details-comment {
+    .essay-details-comment {
         padding: 0 30px 50px 30px;
     }
 }
