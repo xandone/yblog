@@ -5,6 +5,10 @@
         </div>
         <div v-if="!isNodata" class="article-content">
             <articleItem v-for="item in tableData " :bean='item' v-bind:key='item.index'></articleItem>
+            <div>
+                <span v-if="isCanPre" @click="getArticleList(tagType,1)" class="turn-page previous-btn">PREVIOUS</span>
+                <span v-if="isCanNext" @click="getArticleList(tagType,2)" class="turn-page next-btn">NEXT</span>
+            </div>
         </div>
         <nodata v-if="isNodata" />
     </div>
@@ -28,7 +32,10 @@ export default {
             tagList: [],
             page: 1,
             row: 10,
-            isNodata: false
+            tagType: -1,
+            isNodata: false,
+            isCanPre: false,
+            isCanNext: false
         }
     },
     created() {
@@ -38,7 +45,13 @@ export default {
         this.getArticleList();
     },
     methods: {
-        getArticleList(type) {
+        //requstType,1:前一页，2：后一页
+        getArticleList(type, requstType) {
+            if (requstType == 1) {
+                this.page--;
+            } else if (requstType == 2) {
+                this.page++;
+            }
             this.$axios.get(`/art/artlist`, {
                     params: {
                         page: this.page,
@@ -65,16 +78,23 @@ export default {
                         this.tableData.push(bean);
                     })
                     this.isNodata = this.tableData.length == 0;
-                    console.log(this.isNodata);
+                    this.isCanNext = artBean.total > this.row * this.page;
+                    this.isCanPre = this.page > 1;
                 })
                 .catch((error) => {
                     console.log(error);
+                    if (requstType = 1) {
+                        this.page++;
+                    } else if (requstType == 2) {
+                        this.page--;
+                    }
                 });
 
         },
 
         searchByTag(type) {
             this.page = 1;
+            this.tagType = type;
             this.getArticleList(type);
         }
     }
@@ -96,6 +116,28 @@ export default {
     padding: 10px;
     background-color: white;
 
+    .turn-page {
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 30px;
+        font-weight: bold;
+        color: $text_blue;
+    }
+
+    .turn-page:hover {
+        background-color: $text_yellow;
+        cursor: pointer;
+    }
+
+    .previous-btn {
+        float: left;
+        margin-left: 20px;
+    }
+
+    .next-btn {
+        float: right;
+        margin-right: 20px;
+    }
 }
 
 .art-tag {
