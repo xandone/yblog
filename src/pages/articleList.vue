@@ -6,8 +6,8 @@
         <div v-if="!isNodata" class="article-content">
             <articleItem v-for="item in tableData " :bean='item' v-bind:key='item.index'></articleItem>
             <div>
-                <span v-if="isCanPre" @click="getArticleList(tagType,1)" class="turn-page previous-btn">PREVIOUS</span>
-                <span v-if="isCanNext" @click="getArticleList(tagType,2)" class="turn-page next-btn">NEXT</span>
+                <span v-if="isCanPre" @click="getArticleList(tagType,1)" class="turn-page previous-btn">←PREVIOUS</span>
+                <span v-if="isCanNext" @click="getArticleList(tagType,2)" class="turn-page next-btn">NEXT→</span>
             </div>
         </div>
         <nodata v-if="isNodata" />
@@ -117,11 +117,13 @@ export default {
     background-color: white;
 
     .turn-page {
-        margin-top: 20px;
+        margin-top: 30px;
         padding: 10px;
-        font-size: 30px;
+        font-size: 26px;
         font-weight: bold;
         color: $text_blue;
+        border: 1px solid $text_yellow;
+        text-align: center;
     }
 
     .turn-page:hover {

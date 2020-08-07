@@ -48,7 +48,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/common/base.scss";
 
 .details-root {
@@ -107,6 +107,11 @@ export default {
 
 code {
     font-size: 16px;
+    color: #555;
+}
+
+a {
+    color: $text_blue;
 }
 
 pre {
