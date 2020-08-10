@@ -48,7 +48,7 @@ export default {
     }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import "@/common/base.scss";
 
 .details-root {
@@ -103,15 +103,15 @@ export default {
     .details-comment {
         padding: 0 30px 50px 30px;
     }
+
+    a {
+        color: $text_blue;
+    }
 }
 
 code {
     font-size: 16px;
     color: #555;
-}
-
-a {
-    color: $text_blue;
 }
 
 pre {

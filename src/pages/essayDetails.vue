@@ -105,11 +105,11 @@ export default {
     }
 }
 
-code {
-    font-size: 16px;
-}
+// code {
+//     font-size: 16px;
+// }
 
-pre {
-    background-color: #f6f6f6;
-}
+// pre {
+//     background-color: #f6f6f6;
+// }
 </style>
