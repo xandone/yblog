@@ -119,7 +119,7 @@ export default {
     padding-left: 10px;
     padding-right: 10px;
     color: #475669;
-    margin: 0 auto;
+    margin: 52px auto 0;
 
     .banner-ic {
         width: 100%;

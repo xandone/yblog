@@ -103,6 +103,10 @@ export default {
     .essay-details-comment {
         padding: 0 30px 50px 30px;
     }
+
+    a {
+        color: $text_blue;
+    }
 }
 
 // code {
