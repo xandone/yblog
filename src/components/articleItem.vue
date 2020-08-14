@@ -37,7 +37,7 @@ export default {
 
 item-span {
     font-size: 14px;
-    color: #999;
+    color: #555;
 }
 
 .item-root {

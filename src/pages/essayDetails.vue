@@ -1,6 +1,6 @@
 <template>
-    <div class="details-root">
-        <div class="content-bg">
+    <div class="essay-details-root">
+        <div class="essay-content-bg">
             <span class="essay-title">{{artDetails.title}}</span>
             <div class="essay-user-info">
                 <span>xandone</span>
@@ -30,7 +30,6 @@ export default {
 
     methods: {
         getArtDetails() {
-            console.log(11111111112222);
             this.$axios.get(`/essay/essayDetails`, {
                     params: {
                         essayId: this.artId
@@ -52,18 +51,18 @@ export default {
 <style lang="scss">
 @import "@/common/base.scss";
 
-.details-root {
+.essay-details-root {
     width: $root_width_value;
     height: 100%;
     background-color: white;
     margin: 0 auto;
 
     img {
-        max-width: 100%;
+        max-width: 80% !important;
     }
 }
 
-.content-bg {
+.essay-content-bg {
     padding: 10px;
     background-color: white;
 

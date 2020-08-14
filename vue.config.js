@@ -1,20 +1,16 @@
-// module.exports = {
-//      //
-//     publicPath: process.env.NODE_ENV === 'production'
-//     ? '/yblogweb/'
-//     : '/'
-// }
-
 module.exports = {
-    lintOnSave: false
-}
+    lintOnSave: false,
 
-pwa: {
-    iconPaths: {
-        favicon32: 'dog.ico',
-        favicon16: 'dog.ico',
-        appleTouchIcon: 'dog.ico',
-        maskIcon: 'dog.ico',
-        msTileImage: 'dog.ico'
-    }
-},
+    pwa: {
+        iconPaths: {
+            favicon32: 'favicon.ico',
+            favicon16: 'favicon.ico',
+            appleTouchIcon: 'favicon.ico',
+            maskIcon: 'favicon.ico',
+            msTileImage: 'favicon.ico'
+        }
+    },
+    
+    publicPath: process.env.NODE_ENV === 'production' ?
+        '/yblogweb/' : '/'
+}
