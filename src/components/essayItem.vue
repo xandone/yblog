@@ -186,6 +186,7 @@ item-span {
     position: absolute;
     bottom: 0;
     right: 10px;
+    color: #999;
 }
 
 .essay-img {

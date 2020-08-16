@@ -13,6 +13,10 @@
         <div class="essay-item">
             <essayItem v-for="item in tableData" :bean='item'></essayItem>
         </div>
+        <div>
+            <span v-if="isCanPre" @click="getArticleList(1)" class="turn-page previous-btn">←PREVIOUS</span>
+            <span v-if="isCanNext" @click="getArticleList(2)" class="turn-page next-btn">NEXT→</span>
+        </div>
     </div>
 </template>
 <script type="text/javascript">
@@ -33,6 +37,8 @@ export default {
             tableData: [],
             page: 1,
             row: 10,
+            isCanPre: false,
+            isCanNext: false
         }
     },
     components: {
@@ -65,19 +71,24 @@ export default {
                 });
 
         },
-        getArticleList(tag) {
+        //requstType,1:前一页，2：后一页
+        getArticleList(requstType) {
             let that = this;
+            if (requstType == 1) {
+                this.page--;
+            } else if (requstType == 2) {
+                this.page++;
+            }
             this.$axios.get(`/essay/essaylist`, {
                     params: {
                         page: this.page,
                         row: this.row,
-                        tag: tag,
                     }
                 })
                 .then((response) => {
-                    const joker = response.data;
-                    const data = joker.data;
-                    // this.tableData = [];
+                    const essaybean = response.data;
+                    const data = essaybean.data;
+                    this.tableData = [];
                     data.forEach(item => {
                         const tableData = {};
                         tableData.title = item.title;
@@ -87,15 +98,21 @@ export default {
                         tableData.contentHtml = item.contentHtml;
                         tableData.coverImg = item.coverImg;
                         tableData.essayId = item.essayId;
-                        // tableData.jokeUserIcon = item.jokeUserIcon;
                         tableData.essayUserId = item.essayUserId;
-                        // tableData.jokeUserNick = item.jokeUserNick;
                         tableData.postTime = item.postTime;
                         this.tableData.push(tableData);
+
+                        this.isCanNext = essaybean.total > this.row * this.page;
+                        this.isCanPre = this.page > 1;
                     })
                 })
                 .catch((error) => {
                     console.log(error);
+                    if (requstType = 1) {
+                        this.page++;
+                    } else if (requstType == 2) {
+                        this.page--;
+                    }
                 });
 
         },
@@ -113,6 +130,33 @@ export default {
     position: relative;
     margin: 0 auto;
     background-color: white;
+    padding-bottom: 50px;
+
+
+    .turn-page {
+        margin-top: 30px;
+        padding: 10px;
+        font-size: 26px;
+        font-weight: bold;
+        color: $text_blue;
+        border: 1px solid $text_yellow;
+        text-align: center;
+    }
+
+    .turn-page:hover {
+        background-color: $text_yellow;
+        cursor: pointer;
+    }
+
+    .previous-btn {
+        float: left;
+        margin-left: 20px;
+    }
+
+    .next-btn {
+        float: right;
+        margin-right: 20px;
+    }
 }
 
 .banner {
