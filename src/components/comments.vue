@@ -175,8 +175,8 @@ export default {
 }
 
 .comment-ic {
-    width: 30px;
-    height: 30px;
+    width: 38px;
+    height: 38px;
     border-radius: 10%;
 }
 

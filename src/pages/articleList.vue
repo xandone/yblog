@@ -18,6 +18,7 @@ import articleItem from '@/components/articleItem'
 import artTag from '@/components/artTag'
 import nodata from '@/components/nodata'
 import vueEvent from '@/bus/vueEvent.js'
+import { friendlyFormatTime } from '@/utils/simpleUtils'
 
 export default {
     components: {
@@ -74,7 +75,7 @@ export default {
                         bean.artId = item.artId;
                         bean.typeName = item.typeName;
                         bean.artUserId = item.artUserId;
-                        bean.postTime = item.postTime;
+                        bean.postTime = friendlyFormatTime(item.postTime);
                         this.tableData.push(bean);
                     })
                     this.isNodata = this.tableData.length == 0;

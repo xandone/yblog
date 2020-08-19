@@ -97,7 +97,7 @@ export default {
     },
     levelGap: {
       type: Number,
-      default: 20
+      default: 15
     },
     iconLeft: {
       type: Boolean,

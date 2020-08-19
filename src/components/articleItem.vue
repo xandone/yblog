@@ -167,5 +167,6 @@ item-span {
     bottom: 0;
     right: 10px;
     color: #999;
+    font-style: italic;
 }
 </style>

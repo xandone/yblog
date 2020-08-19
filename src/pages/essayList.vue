@@ -22,6 +22,7 @@
 <script type="text/javascript">
 import essayItem from "../components/essayItem.vue"
 import vueEvent from '@/bus/vueEvent.js'
+import { friendlyFormatTime } from '@/utils/simpleUtils'
 export default {
     props: {
         ban: {
@@ -99,7 +100,7 @@ export default {
                         tableData.coverImg = item.coverImg;
                         tableData.essayId = item.essayId;
                         tableData.essayUserId = item.essayUserId;
-                        tableData.postTime = item.postTime;
+                        tableData.postTime = friendlyFormatTime(item.postTime);
                         this.tableData.push(tableData);
 
                         this.isCanNext = essaybean.total > this.row * this.page;
