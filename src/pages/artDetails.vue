@@ -6,26 +6,37 @@
                 <span>{{artDetails.typeName}}</span>
                 <span>{{artDetails.postTime}}</span>
             </div>
-            <div class="art-content" v-html="artDetails.contentHtml"></div>
+            <div id="demo" class="art-content" v-html="artDetails.contentHtml"></div>
+            <component :is="catalogCom" v-bind="catalogProps" class="catalog"></component>
             <comments :isShowComment="true" :artId="artId" :minRows='3' :maxRows='6' class="details-comment"></comments>
         </div>
     </div>
 </template>
 <script>
 import comments from '@/components/comments'
+import SideCatalog from '@/components/SideCatalog'
 
 export default {
     data() {
         return {
             artId: this.$route.params.artId,
             artDetails: {},
+            catalogProps: {
+                // 内容容器selector(必需)
+                container: "#demo",
+                height: "calc(100% - 100px)",
+                levelList: ["h1", "h2", "h3", "h4"],
+            },
+            catalogCom: ''
         }
     },
 
     created() {
         this.getArtDetails();
+        let that = this;
     },
-    components: { comments },
+    components: { comments, SideCatalog },
+    mounted() {},
     computed: {},
 
     methods: {
@@ -40,6 +51,7 @@ export default {
                     const item = result.data[0];
                     this.artDetails = {};
                     this.artDetails = item;
+                    this.catalogCom = "SideCatalog";
                 })
                 .catch((error) => {
                     console.log(error);
@@ -59,6 +71,16 @@ export default {
 
     img {
         max-width: 90%;
+    }
+
+    .catalog {
+        position: fixed;
+        top: 10%;
+        right: 2%;
+        width: 14%;
+        z-index: 10;
+        text-align: left;
+        font-size: 15px;
     }
 }
 
