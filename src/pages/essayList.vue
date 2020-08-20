@@ -177,7 +177,8 @@ export default {
         bottom: 10px;
         right: 10px;
         color: #eee;
-        font-size: 14px;
+        font-size: 16px;
+        // font-weight: bold;
         z-index: 2;
         font-style: italic;
         text-overflow: ellipsis;

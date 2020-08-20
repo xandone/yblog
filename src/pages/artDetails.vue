@@ -137,6 +137,8 @@ code {
 }
 
 pre {
+    padding: 0 10px;
     background-color: #f6f6f6;
+    overflow: auto;
 }
 </style>

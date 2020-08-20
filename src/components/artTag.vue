@@ -74,8 +74,26 @@ export default {
             border: 0.5px solid $text_yellow;
             border-radius: 2px;
             cursor: pointer;
+            position: relative;
         }
 
+        div::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            transition: .3s;
+            opacity: .3;
+            background: $text_yellow;
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+
+        div:hover::after {
+            transform: scaleX(1);
+        }
 
     }
 
@@ -89,10 +107,11 @@ export default {
 
     span {
         font-size: 14px;
+        font-style: italic;
     }
 
     span:nth-child(1) {
-        color: #999;
+        color: #666;
     }
 
     span:nth-child(2) {
