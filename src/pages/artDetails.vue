@@ -10,6 +10,9 @@
             <component :is="catalogCom" v-bind="catalogProps" class="catalog"></component>
             <comments :isShowComment="true" :artId="artId" :minRows='3' :maxRows='6' class="details-comment"></comments>
         </div>
+        <el-dialog title="预览" :visible.sync="dialogImgVisible" width="80%">
+            <el-image style="min-width: 60%; width:auto; height: auto;" class="avatar" v-if="selectImgSrc" :src="selectImgSrc"></el-image>
+        </el-dialog>
     </div>
 </template>
 <script>
@@ -27,7 +30,9 @@ export default {
                 height: "calc(100% - 100px)",
                 levelList: ["h1", "h2", "h3", "h4"],
             },
-            catalogCom: ''
+            catalogCom: '',
+            dialogImgVisible: false,
+            selectImgSrc: ''
         }
     },
 
@@ -37,6 +42,9 @@ export default {
     },
     components: { comments, SideCatalog },
     mounted() {},
+    updated() {
+        this.setImgOnClick();
+    },
     computed: {},
 
     methods: {
@@ -57,6 +65,17 @@ export default {
                     console.log(error);
                 });
         },
+
+        setImgOnClick() {
+            let imgs = document.getElementsByTagName("img");
+            let that = this;
+            imgs.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    that.dialogImgVisible = true;
+                    that.selectImgSrc = item.src;
+                });
+            })
+        }
     }
 }
 </script>
@@ -81,6 +100,10 @@ export default {
         z-index: 10;
         text-align: left;
         font-size: 15px;
+    }
+
+    .el-image img {
+        max-width: 100% !important;
     }
 }
 
