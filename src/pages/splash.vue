@@ -5,11 +5,9 @@
                 <span class="logo-span">xandone</span>
             </div>
             <div class="splash-tv-root">
-                <a href="https://github.com/xandone" target="_blank">
-                <span class="splash-tv">github</span>
-            </a>
-                <span class="splash-tv dividle">|</span>
-                <span class="splash-tv blog" @click="gotoHomepage()">博客</span>
+                <span class="splash-tv blog" @click="go2github()">github</span>
+                <span class="dividle">|</span>
+                <span class="splash-tv blog" @click="go2Homepage()">博客</span>
             </div>
         </div>
     </div>
@@ -17,7 +15,10 @@
 <script type="text/javascript">
 export default {
     methods: {
-        gotoHomepage() {
+        go2github() {
+            window.open("https://github.com/xandone");
+        },
+        go2Homepage() {
             this.$router.push('/articleList');
         }
     }
@@ -41,8 +42,8 @@ export default {
         position: absolute;
         top: 50%;
         display: flex;
-        flex-direction:column;
-        align-items:center;
+        flex-direction: column;
+        align-items: center;
     }
 
     .logo-span {
@@ -58,13 +59,34 @@ export default {
     }
 
     .splash-tv {
+        position: relative;
         font-size: 28px;
         color: $text_yellow;
         // font-family: '仿宋'
     }
 
+    .splash-tv::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -8px;
+        height: 3px;
+        transition: .3s;
+        opacity: .6;
+        background: $text_yellow;
+        transform-origin: center;
+        transform: scaleX(0);
+    }
+
+    .splash-tv:hover::after {
+        transform: scaleX(1);
+    }
+
     .dividle {
         margin: 0 30px;
+        color: $text_yellow;
+        font-size: 22px;
     }
 
     .blog {
@@ -72,6 +94,7 @@ export default {
     }
 
     a {
+        position: relative;
         display: inline-block;
     }
 }
