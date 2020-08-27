@@ -7,7 +7,7 @@ import elementUi from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from './api/api'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 Vue.use(elementUi);
 

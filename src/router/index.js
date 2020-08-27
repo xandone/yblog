@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-// import mainVue from '@/pages/main'
+import splash from '@/pages/splash.vue'
 import articleList from '@/pages/articleList'
 import picList from '@/pages/picList'
 import essayList from '@/pages/essayList'
@@ -17,10 +17,14 @@ export default new Router({
     base: process.env.BASE_URL,
     routes: [{
         path: '/',
+        name: 'splash',
+        component: splash
+    }, {
+        path: '/home',
         name: 'home',
         component: Home,
         children: [{
-            path: '/',
+            path: '/articleList',
             name: 'articleList',
             component: articleList,
         }, {

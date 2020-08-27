@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import { baseUrl } from '@/config/env'
 
-import Qs from 'qs'
+import Qs from 'qs'// 引入qs模块，用来序列化post类型的数据
 
 
 axios.defaults.baseURL = baseUrl;
