@@ -115,43 +115,21 @@ item-span {
 
 .essay-content-root {
     width: 100%;
-    height: 75px;
     line-height: 25px;
+    height: 75px;
     text-align: left;
     overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 
     span {
         @extend item-span;
-        float: right;
-        margin-left: -5px;
+        margin-left: 5px;
         width: 100%;
         word-break: break-all;
     }
-}
-
-// 最后的三个省略号
-.essay-content-root::before {
-    float: left;
-    width: 5px;
-    content: '';
-    height: 40px;
-}
-
-.essay-content-root::after {
-    float: right;
-    content: "...";
-    height: 20px;
-    line-height: 20px;
-    /* 为三个省略号的宽度 */
-    width: 3em;
-    /* 使盒子不占位置 */
-    margin-left: -3em;
-    /* 移动省略号位置 */
-    position: relative;
-    left: 100%;
-    top: 15px;
-    padding-right: 5px;
-    color: #999;
 }
 
 .essay-scan-root {
