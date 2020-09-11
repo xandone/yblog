@@ -27,19 +27,14 @@ export default {
                 .then((response) => {
                     const bean = response.data;
                     const data = bean.data;
-                    let allCount = 0;
                     data.forEach(item => {
                         const tagBean = {};
                         tagBean.typeName = item.typeName;
                         tagBean.count = item.count;
                         tagBean.type = item.type;
                         this.tagList.push(tagBean);
-                        allCount = allCount + item.count;
                     })
-                    const tempBean = {};
-                    tempBean.count = allCount;
-                    tempBean.typeName = "全部";
-                    this.tagList.unshift(tempBean);
+                    // this.tagList.unshift(tempBean);
                 })
                 .catch((error) => {
                     console.log(error);
