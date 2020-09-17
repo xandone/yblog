@@ -1,7 +1,7 @@
 <template>
     <div class="essay-item-root">
         <div>
-            <img :src="imgArr[0]" v-if="isShowLeft" class="essay-place-img" alt="">
+            <img :src="bean.imgArr[0]" v-if="bean.isShowLeft" class="essay-place-img" alt="">
         </div>
             <div class="essay-wrap-scan">
                 <div class="essay-title-root">
@@ -13,8 +13,8 @@
                     <div class="essay-content-root">
                         <span class="essay-content-span">{{bean.content}}</span>
                     </div>
-                    <div class="essay-img" v-if="isShowBottom">
-                        <img  v-for="item in imgArr" alt="" :src="item" v-if="isShowBottom">
+                    <div class="essay-img" v-if="bean.isShowBottom">
+                        <img  v-for="item in bean.imgArr" alt="" :src="item" v-if="bean.isShowBottom">
                     </div>
                         <div class="essay-scan-root">
                             <!--  <span ><img src="../assets/scan.png" alt="">{{bean.essayBrowseCount}}</span> -->
@@ -42,21 +42,10 @@ export default {
     },
 
     created() {
-        this.checkShowLeft(this.bean.coverImg);
-        this.checkShowBottom(this.bean.coverImg);
+
     },
     methods: {
-        checkShowBottom(jsonImgArr) {
-            let jsarr = JSON.parse(jsonImgArr);
-            this.isShowBottom = jsarr.length >= 3;
-            this.imgArr = jsarr;
-        },
 
-        checkShowLeft(jsonImgArr) {
-            let jsarr = JSON.parse(jsonImgArr);
-            this.isShowLeft = jsarr.length == 1 || jsarr.length == 2;
-            this.imgArr = jsarr;
-        }
     }
 }
 </script>

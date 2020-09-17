@@ -11,7 +11,7 @@
             </el-carousel>
         </div>
         <div class="essay-item">
-            <essayItem v-for="item in tableData" :bean='item'></essayItem>
+            <essayItem v-for="item in essatDatas" :bean='item'></essayItem>
         </div>
         <div>
             <span v-if="isCanPre" @click="getArticleList(1)" class="turn-page previous-btn">←PREVIOUS</span>
@@ -35,7 +35,7 @@ export default {
     data() {
         return {
             bannerData: {},
-            tableData: [],
+            essatDatas: [],
             page: 1,
             row: 10,
             isCanPre: false,
@@ -89,9 +89,9 @@ export default {
                 .then((response) => {
                     const essaybean = response.data;
                     const data = essaybean.data;
-                    this.tableData = [];
+                    this.essatDatas = [];
                     data.forEach(item => {
-                        const tableData = {};
+                        let tableData = {};
                         tableData.title = item.title;
                         tableData.essayCommentCount = item.essayCommentCount;
                         tableData.essayBrowseCount = item.essayBrowseCount;
@@ -101,11 +101,12 @@ export default {
                         tableData.essayId = item.essayId;
                         tableData.essayUserId = item.essayUserId;
                         tableData.postTime = friendlyFormatTime(item.postTime);
-                        this.tableData.push(tableData);
+                        tableData = this.checkShowImage(item);
 
-                        this.isCanNext = essaybean.total > this.row * this.page;
-                        this.isCanPre = this.page > 1;
-                    })
+                        this.essatDatas.push(tableData);
+                    });
+                    this.isCanNext = essaybean.total > this.row * this.page;
+                    this.isCanPre = this.page > 1;
                 })
                 .catch((error) => {
                     console.log(error);
@@ -116,6 +117,24 @@ export default {
                     }
                 });
 
+        },
+        checkShowImage(tableData) {
+            let jsonImgArr = tableData.coverImg;
+            let jsarr = JSON.parse(jsonImgArr);
+            if (!jsarr || jsarr.length <= 0) {
+                tableData.isShowLeft = false;
+                tableData.isShowBottom = false;
+                tableData.imgArr = [];
+            } else if (jsarr.length <= 2) {
+                tableData.isShowLeft = true;
+                tableData.isShowBottom = false;
+                tableData.imgArr = jsarr;
+            } else {
+                tableData.isShowLeft = false;
+                tableData.isShowBottom = true;
+                tableData.imgArr = jsarr.slice(0, 3);
+            }
+            return tableData;
         },
     }
 

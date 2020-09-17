@@ -77,7 +77,7 @@ export default {
                         bean.artUserId = item.artUserId;
                         bean.postTime = friendlyFormatTime(item.postTime);
                         this.tableData.push(bean);
-                    })
+                    });
                     this.isNodata = this.tableData.length == 0;
                     this.isCanNext = artBean.total > this.row * this.page;
                     this.isCanPre = this.page > 1;
