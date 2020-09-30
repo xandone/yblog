@@ -2,6 +2,9 @@
     <div class="article-root">
         <div class="art-tag">
             <artTag @clickTag="searchByTag"></artTag>
+            <div class="ip-record">
+                <iprecord></iprecord>
+            </div>
         </div>
         <div v-if="!isNodata" class="article-content">
             <articleItem v-for="item in tableData " :bean='item' v-bind:key='item.index'></articleItem>
@@ -17,6 +20,7 @@
 import articleItem from '@/components/articleItem'
 import artTag from '@/components/artTag'
 import nodata from '@/components/nodata'
+import iprecord from '@/components/iprecord'
 import vueEvent from '@/bus/vueEvent.js'
 import { friendlyFormatTime } from '@/utils/simpleUtils'
 
@@ -24,7 +28,8 @@ export default {
     components: {
         articleItem,
         artTag,
-        nodata
+        nodata,
+        iprecord
     },
 
     data() {
@@ -145,9 +150,15 @@ export default {
 
 .art-tag {
     width: 12%;
+    height: 100%;
     margin-top: $topbarHeight;
     position: fixed;
     z-index: 10;
     right: 2%;
+}
+
+.ip-record {
+    position: absolute;
+    bottom: 12%;
 }
 </style>

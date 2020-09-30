@@ -100,9 +100,8 @@ export default {
                         tableData.coverImg = item.coverImg;
                         tableData.essayId = item.essayId;
                         tableData.essayUserId = item.essayUserId;
-                        tableData.postTime = friendlyFormatTime(item.postTime);
                         tableData = this.checkShowImage(item);
-
+                        tableData.postTime = friendlyFormatTime(item.postTime);
                         this.essatDatas.push(tableData);
                     });
                     this.isCanNext = essaybean.total > this.row * this.page;

@@ -3,6 +3,7 @@
         <div class="user-root">
             <img class="user-icon" src="../assets/head_icon.jpg" alt="">
             <span class="user-name">xandone</span>
+            <span class="user-sign">Somebody has to win, so why not be me?</span>
             <div class="user-info">
                 <a href="https://github.com/xandone" target="_blank">
                    <div class="github-span">
@@ -19,8 +20,16 @@
                     <span >{{adminInfo.totalArts}}篇</span>
                 </div>
             </div>
+            <div class="qr-code-root">
+                <div class="qr-code-android">
+                    <div class="qr-info">
+                        <span >Android app下载</span><a href="https://github.com/xandone/yblogapp" target="_blank">（项目源码）</a>
+                    </div>
+                    <img src="../assets/yblogapp_qr_code.png" alt="">
+                </div>
+                </div>
+            </div>
         </div>
-    </div>
 </template>
 <script>
 import vueEvent from '@/bus/vueEvent.js'
@@ -74,7 +83,7 @@ user-span {
     position: absolute;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     margin-top: 60px;
 
     .user-icon {
@@ -92,6 +101,14 @@ user-span {
     .user-name {
         font-size: 40px;
         font-weight: bold;
+        text-align: left;
+    }
+
+    .user-sign {
+        font-size: 18px;
+        max-width: 250px;
+        text-align: left;
+        font-style: italic;
     }
 
     .user-info {
@@ -122,6 +139,37 @@ user-span {
 
         span {
             margin-left: 10px;
+        }
+    }
+
+    .qr-code-root {
+        margin-top: 10px;
+        text-align: left;
+        border-top: #999 solid 1px;
+        padding-top: 20px;
+
+        .qr-code-android {
+            display: flex;
+            flex-direction: column;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .qr-info {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+
+            a {
+                font-size: 15px;
+                color: #3ca5f6;
+            }
         }
     }
 }
