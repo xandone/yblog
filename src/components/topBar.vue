@@ -1,6 +1,6 @@
 <template>
     <div id="topBar">
-        <a href="/articleList" class="blog-name"> <span>xandone</span></a>
+        <a href="/articleList" class="blog-name"> <img src="../assets/m_logo_ic.png" alt=""><span>xandone</span></a>
         <div class="tab">
             <el-menu :default-active="topbarIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
                 <!-- <el-menu-item index="1">首页</el-menu-item> -->
@@ -76,5 +76,12 @@ export default {
     float: left;
     line-height: $topbarHeight;
     margin-left: 10%;
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 30px;
+        height: 30px;
+    }
 }
 </style>

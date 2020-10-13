@@ -92,7 +92,7 @@ item-span {
 
     .essay-title-span {
         font-weight: bold;
-        font-size: 20px;
+        font-size: 22px;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
@@ -114,7 +114,7 @@ item-span {
     -webkit-box-orient: vertical;
 
     span {
-        @extend item-span;
+        font-size: 15px;
         margin-left: 5px;
         width: 100%;
         word-break: break-all;
@@ -153,7 +153,7 @@ item-span {
     position: absolute;
     bottom: 0;
     right: 10px;
-    color: #999;
+    color: #555;
     font-style: italic;
 }
 

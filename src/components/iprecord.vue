@@ -1,6 +1,6 @@
 <template>
     <div class="record">
-        <span>xandone</span>
+        <span>xandone' blog</span>
         <span>鄂ICP备 19030263号</span>
     </div>
 </template>
