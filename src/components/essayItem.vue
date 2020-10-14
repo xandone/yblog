@@ -163,7 +163,7 @@ item-span {
 
     img {
         width: 180px;
-        height: 120px;
+        height: 125px;
         border-radius: 4px;
         margin-right: 10px;
         transition: all 0.5s;

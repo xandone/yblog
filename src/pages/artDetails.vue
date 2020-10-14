@@ -4,6 +4,7 @@
             <span class="art-title">{{artDetails.title}}</span>
             <div class="dart-user-info">
                 <span>{{artDetails.typeName}}</span>
+                <img src="../assets/date_ic.png" alt=""/>
                 <span>{{artDetails.postTime}}</span>
             </div>
             <div id="demo" class="art-content" v-html="artDetails.contentHtml"></div>
@@ -122,6 +123,8 @@ export default {
     }
 
     .dart-user-info {
+        display: flex;
+        align-items: center;
         text-align: left;
         margin-left: 20px;
         font-size: 13px;
@@ -132,8 +135,13 @@ export default {
             cursor: default;
         }
 
-        span:nth-child(2) {
-            color: #999;
+        img {
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+
+        span:nth-child(3) {
+            color: #666;
         }
     }
 
@@ -143,6 +151,7 @@ export default {
         padding: 0 20px 20px 20px;
         border-bottom: 1px solid #f0f0f0;
         line-height: 30px;
+        color: #333;
     }
 
     .details-comment {

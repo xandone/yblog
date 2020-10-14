@@ -4,6 +4,7 @@
             <span class="essay-title">{{artDetails.title}}</span>
             <div class="essay-user-info">
                 <span>xandone</span>
+                <img src="../assets/date_ic.png" alt=""/>
                 <span>{{artDetails.postTime}}</span>
             </div>
             <div class="essay-content" v-html="artDetails.contentHtml"></div>
@@ -98,7 +99,10 @@ export default {
     }
 
     .essay-user-info {
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
 
         span:nth-child(1) {
             font-size: 18px;
@@ -107,10 +111,16 @@ export default {
             cursor: default;
         }
 
-        span:nth-child(2) {
-            font-size: 13px;
-            color: #999;
+        img {
+            margin-left: 2px;
+            margin-right: 2px;
         }
+
+        span:nth-child(3) {
+            font-size: 13px;
+            color: #666;
+        }
+
     }
 
     .essay-content {
@@ -119,6 +129,7 @@ export default {
         padding: 0 20px 20px 20px;
         border-bottom: 1px solid #f0f0f0;
         line-height: 30px;
+        color: #333;
     }
 
     .essay-details-comment {
