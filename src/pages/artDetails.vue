@@ -11,8 +11,9 @@
             <component :is="catalogCom" v-bind="catalogProps" class="catalog"></component>
             <comments :isShowComment="true" :artId="artId" :minRows='3' :maxRows='6' class="details-comment"></comments>
         </div>
-        <el-dialog title="预览" :visible.sync="dialogImgVisible" width="80%">
-            <el-image style="min-width: 60%; width:auto; height: auto;" class="avatar" v-if="selectImgSrc" :src="selectImgSrc"></el-image>
+        <el-dialog :visible.sync="dialogImgVisible" width="80%">
+            <el-image style="min-width:60%; width: auto;height: auto; padding:0;margin:0;" class="avatar" v-if="selectImgSrc" :src="selectImgSrc">
+            </el-image>
         </el-dialog>
     </div>
 </template>

@@ -25,9 +25,9 @@
             </el-pagination>
         </div>
         <div class="repaly-root">
-            <el-input type="textarea" :autosize="{ minRows: minRows, maxRows: maxRows}" placeholder="请输入内容" v-model="details" style="width: 80%;" maxlength="200" show-word-limit>
+            <el-input type="textarea" :autosize="{ minRows: minRows, maxRows: maxRows}" placeholder="已关闭.." v-model="details" style="width: 80%;" maxlength="200" show-word-limit :disabled="true">
             </el-input>
-            <el-button @click="addComment" type="primary" size="small" style="margin-left: 10px;">发布</el-button>
+            <el-button @click="addComment" type="primary" size="small" style="margin-left: 10px;" :disabled="true">发布</el-button>
         </div>
     </div>
 </template>
