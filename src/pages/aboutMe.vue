@@ -33,7 +33,8 @@
                 <img src="../assets/api_ic.png"alt=""> <span >后台源码：</span><a href="https://github.com/xandone/yblogserver" target="_blank">yblogserver</a>
             </div>
             <div class="source-code-info">
-                <img src="../assets/android.png"alt=""> <span >Android端源码：</span><a href="https://github.com/xandone/yblogapp" target="_blank">yblogapp</a>
+                <img src="../assets/android.png"alt=""> <span >Android端源码：</span><a href="https://github.com/xandone/yblogapp" target="_blank">yblogapp(Java)</a><span style="margin-left:10px">|</span>
+                <a href="https://github.com/xandone/yblogapp" target="_blank" style="margin-left:10px">yblogapp(kotlin)</a>
             </div>
             <div class="source-code-info">
                 <img src="../assets/wx_project.png"alt=""> <span >微信小程序源码：</span><a href="https://github.com/xandone/yblog-wx" target="_blank">yblog-wx</a>
