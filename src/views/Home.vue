@@ -1,5 +1,5 @@
 <template>
-    <div class="home-root1">
+    <div id="home-root1">
         <topBar></topBar>
         <router-view></router-view>
     </div>
@@ -9,12 +9,16 @@ import topBar from "@/components/topBar"
 export default {
     name: 'home',
     components: { topBar },
+    mounted() {},
+
+    methods: {
+    }
 }
 </script>
 <style lang="scss">
 @import "@/common/base";
 
-.home-root1 {
+#home-root1 {
     width: 100%;
     min-height: 100%;
     display: flex;

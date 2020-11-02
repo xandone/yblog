@@ -1,10 +1,22 @@
 <template>
-    <div id="app">
+    <div id="app" v-on:click="createLoves($event)">
+        <background ref="background"></background>
         <router-view />
     </div>
 </template>
 <script>
-export default {}
+import background from "@/components/background.vue"
+export default {
+    components: { background },
+    methods: {
+        createLoves(event) {
+            this.$refs.background.createLoves(event)
+        },
+        removeSmallHert() {
+            this.$refs.background.removeSmallHert()
+        }
+    }
+}
 </script>
 <style lang="scss">
 html,

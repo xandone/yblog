@@ -77,7 +77,7 @@ export default {
                     that.selectImgSrc = item.src;
                 });
             })
-        }
+        },
     }
 }
 </script>

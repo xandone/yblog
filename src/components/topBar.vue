@@ -1,6 +1,6 @@
 <template>
     <div id="topBar">
-        <a href="/articleList" class="blog-name"> <span>xandone</span></a>
+        <a href="/articleList" class="blog-name" @click.stop=""> <span>xandone</span></a>
         <div class="tab">
             <el-menu :default-active="topbarIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
                 <!-- <el-menu-item index="1">首页</el-menu-item> -->
