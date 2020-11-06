@@ -1,11 +1,7 @@
 <template>
     <div>
-        <div id="lovesBgc"></div>
         <!--   start-->
         <div v-for="(item,index) in loves" v-bind:key="index" v-bind:ref="loves[index].count" class="img" v-bind:style="item.top+item.left+item.scale+item.opacity">
-            <!--             <div class="left" v-bind:style="item.childBgc"></div>
-            <div class="right" v-bind:style="item.childBgc"></div>
-            <div class="under" v-bind:style="item.childBgc"></div> -->
             <div class="textstyle" v-bind:style="item.childBgc"> {{text[loves[index].textIndex]}}</div>
         </div>
         <!--  stop-->
@@ -41,8 +37,8 @@ export default {
             let index = 0; //text文本下标
             let color = "color:" + this.color16();
             index = Math.floor(Math.random() * this.text.length);
-            x = event.clientX - 10;
-            y = event.clientY - 17;
+            x = event.clientX;
+            y = event.pageY;
             let style = {
                 count: 'img' + ++this.count, //
                 top: 'top:' + y + 'px;',
@@ -110,26 +106,6 @@ export default {
 }
 </script>
 <style lang="scss">
-#lovesBgc {
-    position: absolute;
-    /* background-color: bisque; */
-    /* background-image: radial-gradient(#243949,#517fa4); */
-
-    background: linear-gradient(#fff1eb, #ace0f9);
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
 
 /* biubiubiu小心心 start */
 .img {
