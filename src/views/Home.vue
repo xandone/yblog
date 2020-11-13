@@ -1,18 +1,19 @@
 <template>
     <div id="home-root1">
-        <topBar></topBar>
+        <div class="blog-info">
+            <blogInfo></blogInfo>
+        </div>
         <router-view></router-view>
     </div>
 </template>
 <script>
-import topBar from "@/components/topBar"
+import blogInfo from "@/components/blogInfo"
 export default {
     name: 'home',
-    components: { topBar },
+    components: { blogInfo },
     mounted() {},
 
-    methods: {
-    }
+    methods: {}
 }
 </script>
 <style lang="scss">
@@ -23,5 +24,12 @@ export default {
     min-height: 100%;
     display: flex;
     justify-content: flex-start;
+    background-color: white;
+
+    .blog-info {
+        width: 20%;
+        min-height: 100%;
+        position: relative;
+    }
 }
 </style>

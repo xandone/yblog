@@ -1,5 +1,5 @@
 <template>
-    <div class="essay-root">
+    <div id="essay-root">
         <div class="banner">
             <el-carousel :interval="3000" height="400px">
                 <el-carousel-item v-for="ban in bannerData">
@@ -106,6 +106,7 @@ export default {
                     });
                     this.isCanNext = essaybean.total > this.row * this.page;
                     this.isCanPre = this.page > 1;
+                    window.scrollTo(0, 0);
                 })
                 .catch((error) => {
                     console.log(error);
@@ -142,15 +143,12 @@ export default {
 <style lang="scss">
 @import "@/common/base.scss";
 
-.essay-root {
+#essay-root {
     width: $root_width_value;
     min-height: 100%;
-    margin-top: $topbarHeight;
     position: relative;
-    margin: 0 auto;
     background-color: white;
     padding-bottom: 50px;
-
 
     .turn-page {
         margin-top: 30px;
@@ -176,40 +174,41 @@ export default {
         float: right;
         margin-right: 20px;
     }
-}
 
-.banner {
-    padding-left: 10px;
-    padding-right: 10px;
-    color: #475669;
-    margin: 52px auto 0;
 
-    .banner-ic {
-        width: 100%;
-        height: 400px;
-    }
-
-    .banner-title {
-        position: absolute;
-        width: 200px;
-        bottom: 10px;
-        right: 10px;
-        color: #eee;
-        font-size: 16px;
-        // font-weight: bold;
-        z-index: 2;
-        font-style: italic;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-        display: inline-block;
-        text-align: right;
+    .banner {
+        padding-left: 10px;
         padding-right: 10px;
-    }
-}
+        color: #475669;
+        margin: 10px auto 0;
 
-.essay-item {
-    // height: 100%;
-    padding: 10px;
+        .banner-ic {
+            width: 100%;
+            height: 400px;
+        }
+
+        .banner-title {
+            position: absolute;
+            width: 200px;
+            bottom: 10px;
+            right: 10px;
+            color: #eee;
+            font-size: 16px;
+            // font-weight: bold;
+            z-index: 2;
+            font-style: italic;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            display: inline-block;
+            text-align: right;
+            padding-right: 10px;
+        }
+    }
+
+    .essay-item {
+        // height: 100%;
+        padding: 10px;
+    }
 }
 </style>

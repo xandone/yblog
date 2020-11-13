@@ -53,7 +53,7 @@ export default {
 @import "@/common/base";
 
 .tag-root {
-
+    width: 70%;
     text-align: left;
 
     .art-tag-span {

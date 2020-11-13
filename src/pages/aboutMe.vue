@@ -1,26 +1,5 @@
 <template>
     <div id="about">
-        <div class="user-root">
-            <img class="user-icon" src="../assets/head_icon.jpg" alt="">
-            <span class="user-name">xandone</span>
-            <span class="user-sign">Somebody has to win, so why not be me?</span>
-            <div class="user-info">
-                <a href="https://github.com/xandone" target="_blank">
-                   <div class="github-span">
-                      <img class="info-img" src="../assets/github.png" alt="">
-                      <span>github</span>
-                   </div>
-                </a>
-                <div class="mail-span">
-                    <img class="info-img" src="../assets/mails.png" alt="">
-                    <span >{{adminInfo.email}}</span>
-                </div>
-                <div class="mail-span">
-                    <img class="info-img" src="../assets/record.png" alt="">
-                    <span >{{adminInfo.totalArts}}篇</span>
-                </div>
-            </div>
-        </div>
         <div class="project-info">
             <span class="project-info-title">项目信息汇总</span>
             <div class="source-code-info">
@@ -58,23 +37,9 @@ export default {
             adminInfo: {},
         }
     },
-    created() {
-        vueEvent.$emit('index', '4');
-        this.getAdminInfo();
-    },
+    created() {},
     methods: {
-        getAdminInfo() {
-            this.$axios.get(`/admin/userInfo`)
-                .then((response) => {
-                    const result = response.data;
-                    const item = result.data[0];
-                    this.adminInfo = {};
-                    this.adminInfo = item;
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-        },
+
     }
 }
 </script>
@@ -90,141 +55,74 @@ user-span {
 #about {
     width: $root_width_value;
     min-height: 100%;
-    padding: 70px 0 0;
-    margin: 0 auto;
     position: relative;
     background-color: white;
     display: flex;
-}
+    margin-left: 20px;
 
-.user-root {
-    left: 2%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    padding-right: 20px;
-    border-right: 1px solid #e2e8f0;
-
-    .user-icon {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        transition-duration: 1.5s;
-        transition-timing-function: ease-out;
-    }
-
-    .user-icon:hover {
-        transform: rotateY(360deg);
-    }
-
-    .user-name {
-        font-size: 40px;
-        font-weight: bold;
+    .project-info {
+        width: 100%;
         text-align: left;
-    }
+        margin-top: 20px;
 
-    .user-sign {
-        font-size: 18px;
-        max-width: 250px;
-        text-align: left;
-        font-style: italic;
-    }
-
-    .user-info {
-        margin-top: 18px;
-    }
-
-    .info-img {
-        width: 22px;
-        height: 22px;
-    }
-
-    .github-span {
-        display: flex;
-        align-items: center;
-
-        span {
-            @extend user-span;
-            margin-left: 10px;
-            color: $text_blue;
-        }
-    }
-
-    .mail-span {
-        @extend user-span;
-        display: flex;
-        align-items: center;
-        margin-top: 5px;
-
-        span {
-            margin-left: 10px;
-        }
-    }
-}
-
-.project-info {
-    width: 100%;
-    margin: 0 80px;
-    text-align: left;
-
-    .project-info-title {
-        font-size: 18px;
-        color: #333;
-        font-weight: bold;
-    }
-
-    .source-code-info {
-        display: flex;
-        align-items: center;
-        font-size: 16px;
-        color: #333;
-        font-weight: bold;
-        line-height: 35px;
-
-        img {
-            width: 26px;
-            height: 26px;
-            margin-right: 10px;
-        }
-    }
-
-    a {
-        font-size: 15px;
-        color: #3ca5f6;
-    }
-
-    .qr-code-root {
-        margin-top: 10px;
-        text-align: left;
-        border-top: #e2e8f0 solid 1px;
-        padding-top: 20px;
-
-        .qr-code-android {
-            display: flex;
-            flex-direction: column;
-        }
-
-        img {
-            width: 200px;
-            height: 200px;
-        }
-
-        .qr-info {
+        .project-info-title {
             font-size: 18px;
-            font-weight: bold;
             color: #333;
-            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .source-code-info {
             display: flex;
             align-items: center;
+            font-size: 16px;
+            color: #333;
+            font-weight: bold;
+            line-height: 35px;
 
-            span {
-                margin-left: 6px;
+            img {
+                width: 26px;
+                height: 26px;
+                margin-right: 10px;
+            }
+        }
+
+        a {
+            font-size: 15px;
+            color: #3ca5f6;
+        }
+
+        .qr-code-root {
+            margin-top: 10px;
+            text-align: left;
+            border-top: #e2e8f0 solid 1px;
+            padding-top: 20px;
+
+            .qr-code-android {
+                display: flex;
+                flex-direction: column;
             }
 
-            a {
-                font-size: 15px;
-                color: #3ca5f6;
+            img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .qr-info {
+                font-size: 18px;
+                font-weight: bold;
+                color: #333;
+                margin-bottom: 5px;
+                display: flex;
+                align-items: center;
+
+                span {
+                    margin-left: 6px;
+                }
+
+                a {
+                    font-size: 15px;
+                    color: #3ca5f6;
+                }
             }
         }
     }

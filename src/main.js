@@ -16,4 +16,5 @@ new Vue({
     store,
     axios,
     render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');
+

@@ -1,16 +1,13 @@
 <template>
-    <div class="article-root">
+    <div id="article-root">
         <div class="art-tag">
             <artTag @clickTag="searchByTag"></artTag>
-            <div class="ip-record">
-                <iprecord></iprecord>
-            </div>
         </div>
         <div v-if="!isNodata" class="article-content">
             <articleItem v-for="item in tableData " :bean='item' v-bind:key='item.index'></articleItem>
             <div>
-                <span v-if="isCanPre" @click="getArticleList(tagType,1)" class="turn-page previous-btn">←PREVIOUS</span>
-                <span v-if="isCanNext" @click="getArticleList(tagType,2)" class="turn-page next-btn">NEXT→</span>
+                <span v-if="isCanPre" @click.stop="getArticleList(tagType,1)" class="turn-page previous-btn">←PREVIOUS</span>
+                <span v-if="isCanNext" @click.stop="getArticleList(tagType,2)" class="turn-page next-btn">NEXT→</span>
             </div>
         </div>
         <nodata v-if="isNodata" />
@@ -20,7 +17,6 @@
 import articleItem from '@/components/articleItem'
 import artTag from '@/components/artTag'
 import nodata from '@/components/nodata'
-import iprecord from '@/components/iprecord'
 import vueEvent from '@/bus/vueEvent.js'
 import { friendlyFormatTime } from '@/utils/simpleUtils'
 
@@ -29,7 +25,6 @@ export default {
         articleItem,
         artTag,
         nodata,
-        iprecord
     },
 
     data() {
@@ -86,6 +81,7 @@ export default {
                     this.isNodata = this.tableData.length == 0;
                     this.isCanNext = artBean.total > this.row * this.page;
                     this.isCanPre = this.page > 1;
+                    window.scrollTo(0, 0);
                 })
                 .catch((error) => {
                     console.log(error);
@@ -110,55 +106,56 @@ export default {
 <style lang='scss'>
 @import "@/common/base.scss";
 
-.article-root {
+#article-root {
     width: $root_width_value;
     min-height: 100%;
-    margin: 0 auto;
-}
 
-.article-content {
-    height: 100%;
-    margin-top: $topbarHeight;
-    padding: 10px;
-    background-color: white;
+    .article-content {
+        height: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+        background-color: white;
 
-    .turn-page {
-        margin-top: 30px;
-        padding: 10px;
-        font-size: 26px;
-        font-weight: bold;
-        color: $text_blue;
-        border: 1px solid $text_yellow;
-        text-align: center;
+        .turn-page {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            padding: 10px;
+            font-size: 26px;
+            font-weight: bold;
+            color: $text_blue;
+            border: 1px solid $text_yellow;
+            text-align: center;
+        }
+
+        .turn-page:hover {
+            background-color: $text_yellow;
+            cursor: pointer;
+        }
+
+        .previous-btn {
+            float: left;
+            margin-left: 20px;
+        }
+
+        .next-btn {
+            float: right;
+            margin-right: 20px;
+        }
     }
 
-    .turn-page:hover {
-        background-color: $text_yellow;
-        cursor: pointer;
+    .art-tag {
+        width: 18%;
+        height: 100%;
+        position: fixed;
+        z-index: 10;
+        right: 0;
+        padding-top: 3%;
+        display: flex;
+        justify-content:center;
+        border-left: 1px solid #e2e8f0;
+
     }
 
-    .previous-btn {
-        float: left;
-        margin-left: 20px;
-    }
 
-    .next-btn {
-        float: right;
-        margin-right: 20px;
-    }
-}
-
-.art-tag {
-    width: 12%;
-    height: 100%;
-    margin-top: $topbarHeight;
-    position: fixed;
-    z-index: 10;
-    right: 2%;
-}
-
-.ip-record {
-    position: absolute;
-    bottom: 12%;
 }
 </style>
