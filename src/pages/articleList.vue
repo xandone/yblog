@@ -109,6 +109,7 @@ export default {
 #article-root {
     width: $root_width_value;
     min-height: 100%;
+    background-color: white;
 
     .article-content {
         height: 100%;

@@ -30,6 +30,7 @@ export default {
         width: 20%;
         min-height: 100%;
         position: relative;
+        background-color: white;
     }
 }
 </style>

@@ -3,7 +3,7 @@
         <div class="project-info">
             <span class="project-info-title">项目信息汇总</span>
             <div class="source-code-info">
-                <img src="../assets/vue_web.png"alt=""> <span > 本站源码托管于：</span><a href="https://github.com/xandone/yblog" target="_blank">yblog</a>
+                <img src="../assets/vue_web.png"alt=""> <span > 本站源码：</span><a href="https://github.com/xandone/yblog" target="_blank">yblog</a>
             </div>
             <div class="source-code-info">
                 <img src="../assets/manager_web.png"alt=""> <span >管理系统源码：</span><a href="https://github.com/xandone/yblog-manager" target="_blank">yblog-manager</a>
@@ -38,6 +38,9 @@ export default {
         }
     },
     created() {},
+    mounted() {
+        window.scrollTo(0, 0);
+    },
     methods: {
 
     }

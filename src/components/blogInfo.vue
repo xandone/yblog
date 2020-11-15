@@ -6,10 +6,10 @@
             <span class="user-sign">Somebody has to win, so why not be me?</span>
             <div class="art-archive">
                 <div class="archive-code-info">
-                    <img src="../assets/code_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(2)">编 程</span>
+                    <img src="../assets/code_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(2)">编 程({{adminInfo.artCounts}})</span>
                 </div>
                 <div class="archive-code-info">
-                    <img src="../assets/essay_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(3)">杂 文</span>
+                    <img src="../assets/essay_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(3)">杂 文({{adminInfo.essayCounts}})</span>
                 </div>
                 <div class="archive-code-info">
                     <img src="../assets/about_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(4)">关 于</span>
@@ -172,7 +172,7 @@ user-span {
             display: flex;
             flex-direction: column;
             margin-top: 10px;
-            align-items: center;
+            align-items: left;
         }
 
         .archive-code-info {

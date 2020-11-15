@@ -10,12 +10,12 @@
                 </el-carousel-item>
             </el-carousel>
         </div>
-        <div class="essay-item">
+        <div class="essay-content">
             <essayItem v-for="item in essatDatas" :bean='item'></essayItem>
-        </div>
-        <div>
-            <span v-if="isCanPre" @click="getArticleList(1)" class="turn-page previous-btn">←PREVIOUS</span>
-            <span v-if="isCanNext" @click="getArticleList(2)" class="turn-page next-btn">NEXT→</span>
+            <div>
+                <span v-if="isCanPre" @click="getArticleList(1)" class="turn-page previous-btn">←PREVIOUS</span>
+                <span v-if="isCanNext" @click="getArticleList(2)" class="turn-page next-btn">NEXT→</span>
+            </div>
         </div>
     </div>
 </template>
@@ -146,35 +146,8 @@ export default {
 #essay-root {
     width: $root_width_value;
     min-height: 100%;
-    position: relative;
     background-color: white;
     padding-bottom: 50px;
-
-    .turn-page {
-        margin-top: 30px;
-        padding: 10px;
-        font-size: 26px;
-        font-weight: bold;
-        color: $text_blue;
-        border: 1px solid $text_yellow;
-        text-align: center;
-    }
-
-    .turn-page:hover {
-        background-color: $text_yellow;
-        cursor: pointer;
-    }
-
-    .previous-btn {
-        float: left;
-        margin-left: 20px;
-    }
-
-    .next-btn {
-        float: right;
-        margin-right: 20px;
-    }
-
 
     .banner {
         padding-left: 10px;
@@ -206,9 +179,34 @@ export default {
         }
     }
 
-    .essay-item {
+    .essay-content {
         // height: 100%;
         padding: 10px;
+
+        .turn-page {
+            margin-top: 30px;
+            padding: 10px;
+            font-size: 26px;
+            font-weight: bold;
+            color: $text_blue;
+            border: 1px solid $text_yellow;
+            text-align: center;
+        }
+
+        .turn-page:hover {
+            background-color: $text_yellow;
+            cursor: pointer;
+        }
+
+        .previous-btn {
+            float: left;
+            margin-left: 20px;
+        }
+
+        .next-btn {
+            float: right;
+            margin-right: 20px;
+        }
     }
 }
 </style>
