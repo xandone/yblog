@@ -12,24 +12,28 @@
                     <img src="../assets/essay_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(3)">杂 文({{adminInfo.essayCounts}})</span>
                 </div>
                 <div class="archive-code-info">
-                    <img src="../assets/about_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(4)">关 于</span>
+                    <img src="../assets/archive_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(4)">归 档({{adminInfo.totalArts}})</span>
+                </div>
+                <div class="archive-code-info">
+                    <img src="../assets/about_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(5)">关 于</span>
                 </div>
             </div>
-            <div class="user-info">
+           <!--  <div class="user-info">
                 <a href="https://github.com/xandone" target="_blank">
                    <div class="github-span">
                       <img class="info-img" src="../assets/github.png" alt="">
+                      <span >github</span>
                    </div>
                 </a>
-                <!--    <div class="mail-span">
+                   <div class="mail-span">
                     <img class="info-img" src="../assets/mails.png" alt="">
                     <span >{{adminInfo.email}}</span>
                 </div>
                 <div class="mail-span">
                     <img class="info-img" src="../assets/record.png" alt="">
                     <span >{{adminInfo.totalArts}}篇</span>
-                </div> -->
-            </div>
+                </div>
+            </div> -->
         </div>
         <div class="ip-record">
             <iprecord></iprecord>
@@ -69,6 +73,9 @@ export default {
                     this.$router.push('/essayList');
                     break;
                 case 4:
+                    this.$router.push('/archive');
+                    break;
+                case 5:
                     this.$router.push('/aboutMe');
                     break;
             }
@@ -99,7 +106,7 @@ user-span {
 }
 
 #blog-info-root {
-    width: 20%;
+    width: 25%;
     height: 100%;
     padding-top: 5%;
     position: fixed;

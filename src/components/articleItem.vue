@@ -1,5 +1,5 @@
 <template>
-    <div class="item-root">
+    <div id="item-root">
         <div>
             <img :src="bean.coverImg" v-if="bean.coverImg" class="place-img" alt="">
         </div>
@@ -40,7 +40,7 @@ item-span {
     color: #555;
 }
 
-.item-root {
+#item-root {
     width: 100%;
     min-height: 140px;
     padding-top: 20px;
@@ -49,102 +49,103 @@ item-span {
     flex-direction: row;
     align-items: flex-start;
     border-bottom: 1px solid $divide_line_color;
-}
 
-.place-img {
-    width: 200px;
-    height: 140px;
-    margin-right: 10px;
-    border-radius: 6px;
-    transition: all 0.5s;
-}
 
-.place-img:hover {
-    transform: scale(1.05);
-}
-
-.wrap-scan {
-    width: 100%;
-    height: 140px;
-    position: relative;
-}
-
-.title-root {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-
-    .title-span {
-        font-weight: bold;
-        font-size: 22px;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-        display: inline-block;
-        text-align: left;
-    }
-
-    .art-type {
-        font-size: 13px;
+    .place-img {
+        width: 200px;
+        height: 140px;
         margin-right: 10px;
-        color: $text_yellow;
+        border-radius: 6px;
+        transition: all 0.5s;
     }
-}
 
+    .place-img:hover {
+        transform: scale(1.05);
+    }
 
-.content-root {
-    text-align: left;
-    width: 100%;
-    height: 75px;
-    line-height: 25px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-
-    span {
-        font-size: 15px;
-        margin-left: 5px;
+    .wrap-scan {
         width: 100%;
-        word-break: break-all;
+        height: 140px;
+        position: relative;
     }
-}
 
-.scan-root {
-    display: flex;
-    position: absolute;
-    bottom: 0;
-
-    span {
-        @extend item-span;
+    .title-root {
         display: flex;
+        width: 100%;
         align-items: center;
+        justify-content: space-between;
+
+        .title-span {
+            font-weight: bold;
+            font-size: 22px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .art-type {
+            font-size: 13px;
+            margin-right: 10px;
+            color: $text_yellow;
+        }
     }
 
-    span:nth-child(2) {
-        margin-left: 12px;
+
+    .content-root {
+        text-align: left;
+        width: 100%;
+        height: 75px;
+        line-height: 25px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+
+        span {
+            font-size: 15px;
+            margin-left: 5px;
+            width: 100%;
+            word-break: break-all;
+        }
+    }
+
+    .scan-root {
+        display: flex;
+        position: absolute;
+        bottom: 0;
+
+        span {
+            @extend item-span;
+            display: flex;
+            align-items: center;
+        }
+
+        span:nth-child(2) {
+            margin-left: 12px;
+
+            img {
+                width: 16px;
+                height: 16px;
+            }
+        }
 
         img {
             width: 16px;
             height: 16px;
+            margin-right: 2px;
         }
     }
 
-    img {
-        width: 16px;
-        height: 16px;
-        margin-right: 2px;
+    .date {
+        @extend item-span;
+        position: absolute;
+        bottom: 0;
+        right: 10px;
+        color: #555;
+        font-style: italic;
     }
-}
-
-.date {
-    @extend item-span;
-    position: absolute;
-    bottom: 0;
-    right: 10px;
-    color: #555;
-    font-style: italic;
 }
 </style>

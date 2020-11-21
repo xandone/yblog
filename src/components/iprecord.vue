@@ -1,6 +1,11 @@
 <template>
-    <div class="record">
-        <span>xandone' blog</span>
+    <div id="record">
+        <div class="blog-name">
+            <a href="https://github.com/xandone" target="_blank">
+                  <img class="info-img" src="../assets/github.png" alt="">
+                </a>
+            <span>xandone' blog</span>
+        </div>
         <span>鄂ICP备 19030263号</span>
     </div>
 </template>
@@ -10,10 +15,20 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.record {
+#record {
     font-size: 14px;
     display: flex;
-    flex-direction:column;
-    align-items:flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .blog-name {
+        display: flex;
+        align-items: center;
+
+        img {
+            width: 22px;
+            height: 22px;
+        }
+    }
 }
 </style>

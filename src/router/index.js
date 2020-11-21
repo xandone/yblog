@@ -9,6 +9,7 @@ import essayList from '@/pages/essayList'
 import aboutMe from '../pages/aboutMe.vue'
 import artDetails from '@/pages/artDetails.vue'
 import essayDetails from '@/pages/essayDetails.vue'
+import archive from '@/pages/archive.vue'
 
 Vue.use(VueRouter)
 
@@ -24,22 +25,28 @@ export default new Router({
         name: 'home',
         component: Home,
         children: [{
-            path: '/articleList',
-            name: 'articleList',
-            component: articleList,
-        }, {
-            path: '/picList',
-            name: 'picList',
-            component: picList,
-        }, {
-            path: '/essayList',
-            name: 'essayList',
-            component: essayList,
-        }, {
-            path: '/aboutMe',
-            name: 'aboutMe',
-            component: aboutMe,
-        }, ]
+                path: '/articleList',
+                name: 'articleList',
+                component: articleList,
+            }, {
+                path: '/picList',
+                name: 'picList',
+                component: picList,
+            }, {
+                path: '/essayList',
+                name: 'essayList',
+                component: essayList,
+            }, {
+                path: '/aboutMe',
+                name: 'aboutMe',
+                component: aboutMe,
+            },
+            {
+                path: '/archive',
+                name: 'archive',
+                component: archive,
+            },
+        ]
     }, {
         path: '/artDetails/:artId',
         name: 'artDetails',

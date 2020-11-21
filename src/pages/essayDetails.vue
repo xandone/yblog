@@ -140,12 +140,4 @@ export default {
         color: $text_blue;
     }
 }
-
-// code {
-//     font-size: 16px;
-// }
-
-// pre {
-//     background-color: #f6f6f6;
-// }
 </style>
