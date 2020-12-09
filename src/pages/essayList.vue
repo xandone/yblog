@@ -1,6 +1,6 @@
 <template>
     <div id="essay-root">
-        <div class="banner">
+          <div class="banner">
             <el-carousel :interval="3000" height="400px">
                 <el-carousel-item v-for="ban in bannerData">
                     <a :href="['/essayDetails/'+ban.articelId]" target="_blank">
@@ -10,13 +10,14 @@
                 </el-carousel-item>
             </el-carousel>
         </div>
-        <div class="essay-content">
-            <essayItem v-for="item in essatDatas" :bean='item'></essayItem>
+        <div  class="essay-content">
+            <essayItem v-for="item in essatDatas " :bean='item' v-bind:key='item.index'></essayItem>
             <div>
-                <span v-if="isCanPre" @click="getArticleList(1)" class="turn-page previous-btn">←PREVIOUS</span>
-                <span v-if="isCanNext" @click="getArticleList(2)" class="turn-page next-btn">NEXT→</span>
+                <span v-if="isCanPre" @click.stop="getArticleList(1)" class="turn-page previous-btn">←PREVIOUS</span>
+                <span v-if="isCanNext" @click.stop="getArticleList(2)" class="turn-page next-btn">NEXT→</span>
             </div>
         </div>
+        <!-- <nodata v-if="isNodata" /> -->
     </div>
 </template>
 <script type="text/javascript">
@@ -147,7 +148,6 @@ export default {
     width: $root_width_value;
     min-height: 100%;
     background-color: white;
-    padding-bottom: 50px;
 
     .banner {
         padding-left: 10px;
@@ -181,10 +181,13 @@ export default {
 
     .essay-content {
         // height: 100%;
-        padding: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        background-color: white;
 
         .turn-page {
             margin-top: 30px;
+            margin-bottom: 30px;
             padding: 10px;
             font-size: 26px;
             font-weight: bold;

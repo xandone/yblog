@@ -85,7 +85,7 @@ export default {
 @import "@/common/base.scss";
 
 .details-root {
-    width: $root_width_value;
+    width: $art_width_value;
     height: 100%;
     background-color: white;
     margin: 0 auto;
