@@ -5,8 +5,8 @@
             <div v-for='item in commentData' class="comment-info-root">
                 <div class="comment-user-info">
                     <div>
-                        <img :src="item.commentIcon===null?require(`@/assets/user_boy.png`):item.commentIcon" alt="" class="comment-ic" @click="toUserView(item)">
-                        <span style="cursor: default" @click="toUserView(item)">{{item.commentNick}}</span>
+                        <img :src="item.commentIcon===null?require(`@/assets/user_boy.png`):item.commentIcon" alt="" class="comment-ic">
+                        <span style="cursor: default">{{item.commentNick}}</span>
                         <span class="comment-browser-version">{{item.commentUserVer}}</span>
                     </div>
                 </div>
@@ -24,22 +24,46 @@
             <el-pagination background @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-size="10" layout="total, prev, pager, next" :total="count">
             </el-pagination>
         </div>
+        <div class="visitor">
+            <input placeholder="昵称" v-model="nickname">
+            </input>
+            <input placeholder="邮箱" v-model="email">
+            </input>
+            <input placeholder="网址(http://) 非必填" v-model="visitorUrl">
+            </input>
+        </div>
         <div class="repaly-root">
-            <el-input type="textarea" :autosize="{ minRows: minRows, maxRows: maxRows}" placeholder="已关闭.." v-model="details" style="width: 80%;" maxlength="200" show-word-limit :disabled="true">
+            <el-input type="textarea" :autosize="{ minRows: minRows, maxRows: maxRows}" placeholder="请输入内容.." v-model="details" style="width: 100%;" maxlength="200" show-word-limit>
             </el-input>
-            <el-button @click="addComment" type="primary" size="small" style="margin-left: 10px;" :disabled="true">发布</el-button>
+            <el-button @click="addComment" type="primary" size="small" class="addbtn">发 布</el-button>
         </div>
     </div>
 </template>
 <script>
 import { getBrowserInfo } from '@/utils/simpleUtils'
+import { setStore, getStore } from '@/utils/utils.js'
+import { VISITOR_INFO_KEY } from '@/config/env'
 export default {
     props: {
         isShowComment: false,
         artId: { type: String },
-        minRows: { type: Number },
-        maxRows: { type: Number },
     },
+    data() {
+        return {
+            minRows: 5,
+            maxRows: 8,
+            commentData: [],
+            page: 1,
+            row: 10,
+            count: 0,
+            currentPage: 1,
+            details: '',
+            nickname: '',
+            email: '',
+            visitorUrl: '',
+        }
+    },
+
     computed: {
         comments() {
             if (this.isShowComment) {
@@ -47,16 +71,18 @@ export default {
             }
         }
     },
-    data() {
-        return {
-            commentData: [],
-            page: 1,
-            row: 10,
-            count: 0,
-            currentPage: 1,
-            details: '',
+
+    mounted() {
+        let json = getStore(VISITOR_INFO_KEY);
+        if (!json || json === undefined) {
+            return;
         }
+        let visitor = JSON.parse(json);
+        this.nickname = visitor.nickname;
+        this.email = visitor.email;
+        this.visitorUrl = visitor.visitorUrl;
     },
+
     methods: {
         toUserView(item) {
             this.$router.push('/aboutMe');
@@ -89,8 +115,7 @@ export default {
                         tableData.commentUserVer = item.commentUserVer;
                         tableData.commentIcon = item.commentIcon;
                         tableData.commentId = item.commentId;
-                        tableData.commentNick = item.commentNick;
-                        tableData.commentNick = "网友";
+                        tableData.commentNick = item.nickname;
                         tableData.commentUserId = item.commentUserId;
                         tableData.artId = item.artId;
 
@@ -103,16 +128,29 @@ export default {
 
         },
         addComment() {
+            this.saveVisitorInfo();
+            if (!this.nickname) {
+                alert('请输入昵称');
+                return;
+            }
+            if (!this.email) {
+                alert('请输入邮箱');
+                return;
+            }
+            this.saveVisitorInfo();
             if (!this.details) {
                 alert('请输入回复内容');
                 return;
             }
-            let commentUserVer = getBrowserInfo();
+            let commentUserVer = getBrowserInfo()[0];
             this.$axios.post(`/comment/add`,
                     this.$qs.stringify({
                         'artId': this.artId,
                         'details': this.details,
-                        'commentUserVer': commentUserVer[0],
+                        'nickname': this.nickname,
+                        'email': this.email,
+                        'visitorUrl': this.visitorUrl,
+                        'commentUserVer': commentUserVer,
                     }))
 
                 .then((response) => {
@@ -123,8 +161,7 @@ export default {
                         tableData.commentDetails = data.commentDetails;
                         tableData.commentUserVer = data.commentUserVer;
                         tableData.commentIcon = data.commentIcon;
-                        tableData.commentNick = data.commentNick;
-                        tableData.commentNick = "网友";
+                        tableData.commentNick = data.nickname;
                         tableData.commentDate = data.commentDate;
                         this.commentData.unshift(tableData);
                         this.count++;
@@ -145,6 +182,14 @@ export default {
         },
         increment() {
             this.$emit('increment');
+        },
+        saveVisitorInfo() {
+            let Visitor = {
+                nickname: this.nickname,
+                email: this.email,
+                visitorUrl: this.visitorUrl,
+            }
+            setStore(VISITOR_INFO_KEY, JSON.stringify(Visitor));
         },
         openToast(msg) {
             this.$notify.error({
@@ -168,9 +213,33 @@ export default {
     padding: 10px 0;
 }
 
-.repaly-root {
+.visitor {
+    display: flex;
+    border: 1px solid #e2e8f0;
     margin-top: 10px;
+
+    input {
+        line-height: 40px;
+        background-color: white;
+        border: 0;
+        outline: none;
+        flex: 1;
+    }
+
+    input::-webkit-input-placeholder {
+        color: #bbb;
+    }
+}
+
+.repaly-root {
+    margin-top: 5px;
+    margin-bottom: 100px;
     text-align: left;
+
+    .addbtn {
+        margin-top: 5px;
+        float: right;
+    }
 }
 
 .comment-ic {
