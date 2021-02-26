@@ -1,22 +1,12 @@
 <template>
     <div id="archive-root">
-        <div class="item-type dividle-item">
+        <div class="item-type">
             <div class="item-type-title">
-                <img src="../assets/line_ic.png" alt=""> <span>编程</span>
+                <img src="../assets/line_ic.png" alt=""> <span>归档</span>
             </div>
             <item v-for="bean in artList" :bean="bean"></item>
             <div class="Pagination" style="text-align: left;margin-top: 10px;">
                 <el-pagination background @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-size="15" layout="total, prev, pager, next" :total="count">
-                </el-pagination>
-            </div>
-        </div>
-        <div class="item-type">
-            <div class="item-type-title">
-                <img src="../assets/line_ic.png" alt=""> <span>杂文</span>
-            </div>
-            <item v-for="bean in essayList" :bean="bean"></item>
-            <div class="Pagination" style="text-align: left;margin-top: 10px;">
-                <el-pagination background @size-change="handleSizeChange2" @current-change="handleCurrentChange2" :current-page="currentPageEssay" :page-size="15" layout="total, prev, pager, next" :total="countEssay">
                 </el-pagination>
             </div>
         </div>
@@ -36,21 +26,14 @@ export default {
             row: 15,
             count: 0,
             currentPage: 1,
-
-            essayList: [],
-            pageEssay: 1,
-            rowEssay: 15,
-            countEssay: 0,
-            currentPageEssay: 1,
         }
     },
     mounted() {
-        this.getArtList();
-        this.getEssayList();
+        this.getArchiveList();
     },
     methods: {
-        getArtList() {
-            this.$axios.get(`/art/artlist`, {
+        getArchiveList() {
+            this.$axios.get(`/art/archivelist`, {
                     params: {
                         page: this.page,
                         row: this.row,
@@ -65,9 +48,9 @@ export default {
                         const bean = {};
                         bean.title = item.title;
                         bean.artId = item.artId;
-                        bean.typeName = item.typeName;
+                        bean.artType = item.artType;
                         bean.postTime = item.postTime;
-                        bean.urlParam = 'artDetails';
+                        bean.urlParam = item.artType === 0 ? 'artDetails' : 'essayDetails';
                         this.artList.push(bean);
                     });
                     window.scrollTo(0, 0);
@@ -79,51 +62,11 @@ export default {
         handleSizeChange(val) {
             console.log(`每页 ${val} 条`);
         },
-        
+
         handleCurrentChange(val) {
             this.currentPage = val;
             this.page = val;
-            this.getArtList();
-        },
-
-        getEssayList() {
-            let that = this;
-            this.$axios.get(`/essay/essaylist`, {
-                    params: {
-                        page: this.pageEssay,
-                        row: this.rowEssay,
-                    }
-                })
-                .then((response) => {
-                    const essaybean = response.data;
-                    const data = essaybean.data;
-                    this.countEssay = essaybean.total;
-                    this.essayList = [];
-                    data.forEach(item => {
-                        let tableData = {};
-                        tableData.title = item.title;
-                        tableData.essayCommentCount = item.essayCommentCount;
-                        tableData.artId = item.essayId;
-                        tableData.postTime = item.postTime;
-                        tableData.urlParam = 'essayDetails';
-
-                        this.essayList.push(tableData);
-                    });
-                    window.scrollTo(0, 0);
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
-
-        },
-
-        handleSizeChange2(val) {
-            console.log(`每页 ${val} 条`);
-        },
-        handleCurrentChange2(val) {
-            this.currentPageEssay = val;
-            this.pageEssay = val;
-            this.getEssayList();
+            this.getArchiveList();
         },
     }
 }
@@ -137,7 +80,7 @@ export default {
     display: flex;
 
     .item-type {
-        width: 50%;
+        width: 80%;
         padding: 10px;
 
         .item-type-title {
