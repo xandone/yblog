@@ -51,8 +51,17 @@ export default {
                         bean.artType = item.artType;
                         bean.postTime = item.postTime;
                         bean.urlParam = item.artType === 0 ? 'artDetails' : 'essayDetails';
+                        bean.year = bean.postTime.substring(0, 4)
                         this.artList.push(bean);
                     });
+                    for (let i = 0; i < this.artList.length; i++) {
+                        if (i > 0) {
+                            this.artList[i].showYear = this.artList[i].year != this.artList[i - 1].year;
+                            console.log(this.artList[i].showYear);
+                        } else {
+                            this.artList[0].showYear = true;
+                        }
+                    }
                     window.scrollTo(0, 0);
                 })
                 .catch((error) => {
