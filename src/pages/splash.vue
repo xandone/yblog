@@ -1,7 +1,7 @@
 <template>
     <div class="splash-root">
         <div class="img-bg">
-            <el-image :fit='cover' src="http://www.xandone.pub/yuhangyuan.jpg" style="width: 100%; height: 100%"></el-image>
+            <el-image :fit='cover' src="http://www.xandone.pub/huoxing.jpg" style="width: 100%; height: 100%"></el-image>
         </div>
         <div class="content">
             <div>
@@ -49,14 +49,14 @@ export default {
 
     .content {
         position: absolute;
-        top: 50%;
+        top: 40%;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
     .logo-span {
-        font-size: 80px;
+        font-size: 100px;
         color: white;
         font-family: '宋体';
     }
@@ -69,7 +69,7 @@ export default {
 
     .splash-tv {
         position: relative;
-        font-size: 28px;
+        font-size: 32px;
         color: $text_yellow;
         // font-family: '仿宋'
     }

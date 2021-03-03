@@ -108,5 +108,11 @@ export default {
     .dividle-item {
         border-right: 1px solid #e2e8f0;
     }
+
+
+    .el-pagination.is-background .el-pager li:not(.disabled).active {
+        background-color: $text_yellow;
+        color: white;
+    }
 }
 </style>
