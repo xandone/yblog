@@ -1,7 +1,7 @@
 <template>
     <div class="splash-root">
         <div class="img-bg">
-            <el-image :fit='cover' src="http://www.xandone.pub/mainimage.jpg" style="width: 100%; height: 100%"></el-image>
+            <el-image :fit='cover' src="http://www.xandone.pub/yuhangyuan.jpg" style="width: 100%; height: 100%"></el-image>
         </div>
         <div class="content">
             <div>
@@ -58,7 +58,7 @@ export default {
     .logo-span {
         font-size: 80px;
         color: white;
-        font-family: '宋体'
+        font-family: '宋体';
     }
 
     .splash-tv-root {
