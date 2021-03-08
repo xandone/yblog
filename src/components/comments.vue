@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="comment-root">
         <div style="padding: 10px;">
             <span >{{comments}}</span>
             <div v-for='item in commentData' class="comment-info-root">
@@ -208,80 +208,90 @@ export default {
 }
 </script>
 <style lang="scss">
-.comment-info-root {
-    border-bottom: 1px solid #f0f0f0;
-    padding: 10px 0;
-}
+@import "@/common/base.scss";
 
-.visitor {
-    display: flex;
-    border: 1px solid #e2e8f0;
-    margin-top: 10px;
+#comment-root {
 
-    input {
-        line-height: 40px;
-        background-color: white;
-        border: 0;
-        outline: none;
-        flex: 1;
-    }
-
-    input::-webkit-input-placeholder {
-        color: #bbb;
-    }
-}
-
-.repaly-root {
-    margin-top: 5px;
-    margin-bottom: 100px;
-    text-align: left;
-
-    .addbtn {
-        margin-top: 5px;
-        float: right;
-    }
-}
-
-.comment-ic {
-    width: 38px;
-    height: 38px;
-    border-radius: 10%;
-}
-
-.comment-user-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    div {
-        display: flex;
-        align-items: center;
+    .comment-info-root {
+        border-bottom: 1px solid #f0f0f0;
         padding: 10px 0;
+    }
 
-        span {
-            margin-left: 10px;
-            font-size: 14px;
-            color: #555;
+    .visitor {
+        display: flex;
+        border: 1px solid #e2e8f0;
+        margin-top: 10px;
+
+        input {
+            line-height: 40px;
+            background-color: white;
+            border: 0;
+            outline: none;
+            flex: 1;
+        }
+
+        input::-webkit-input-placeholder {
+            color: #bbb;
         }
     }
 
-    .comment-browser-version {
-        font-size: 13px;
-        color: #aaa;
+    .repaly-root {
+        margin-top: 5px;
+        margin-bottom: 100px;
+        text-align: left;
+
+        .addbtn {
+            margin-top: 5px;
+            float: right;
+        }
     }
-}
 
-.comment-date {
-    font-size: 13px;
-    color: #bbb;
-    padding-left: 40px;
-    text-align: left;
-}
+    .comment-ic {
+        width: 38px;
+        height: 38px;
+        border-radius: 10%;
+    }
 
-.conment-detail {
-    font-size: 14px;
-    color: #333;
-    padding: 10px 40px;
-    text-align: left;
+    .comment-user-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        div {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+
+            span {
+                margin-left: 10px;
+                font-size: 14px;
+                color: #555;
+            }
+        }
+
+        .comment-browser-version {
+            font-size: 13px;
+            color: #aaa;
+        }
+    }
+
+    .comment-date {
+        font-size: 13px;
+        color: #bbb;
+        padding-left: 40px;
+        text-align: left;
+    }
+
+    .conment-detail {
+        font-size: 14px;
+        color: #333;
+        padding: 10px 40px;
+        text-align: left;
+    }
+
+    .el-pagination.is-background .el-pager li:not(.disabled).active {
+        background-color: $text_yellow;
+        color: white;
+    }
 }
 </style>

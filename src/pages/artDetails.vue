@@ -165,8 +165,9 @@ export default {
 }
 
 code {
-    font-size: 16px;
+    font-size: 17px;
     color: #555;
+    font-weight: bold;
 }
 
 pre {
