@@ -94,7 +94,7 @@ export default {
 
         .item-type-title {
             text-align: left;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             display: flex;
             align-items: center;

@@ -31,6 +31,7 @@ export default {
         font-size: 16px;
         text-align: left;
         line-height: 50px;
+        color: #555;
     }
 
     .archive-item {
@@ -46,7 +47,7 @@ export default {
         }
 
         .date {
-            color: #666;
+            color: #888;
             font-size: 15px;
         }
 

@@ -49,7 +49,7 @@ item-span {
     flex-direction: row;
     align-items: flex-start;
     border-bottom: 1px solid $divide_line_color;
-
+    overflow: hidden;
 
     .place-img {
         width: 200px;

@@ -1,5 +1,5 @@
 <template>
-    <div class="details-root">
+    <div id="art-details-root">
         <div class="content-bg">
             <span class="art-title">{{artDetails.title}}</span>
             <div class="dart-user-info">
@@ -11,15 +11,13 @@
             <component :is="catalogCom" v-bind="catalogProps" class="catalog"></component>
             <comments :isShowComment="true" :artId="artId" class="details-comment"></comments>
         </div>
-        <el-dialog :visible.sync="dialogImgVisible" width="80%">
-            <el-image style="min-width:60%; width: auto;height: auto; padding:0;margin:0;" class="avatar" v-if="selectImgSrc" :src="selectImgSrc">
-            </el-image>
-        </el-dialog>
+        <ElImageViewer v-if="dialogImgVisible" :on-close="closeViewer" :url-list="[selectImgSrc]" />
     </div>
 </template>
 <script>
 import comments from '@/components/comments'
 import SideCatalog from '@/components/SideCatalog'
+import ElImageViewer from 'element-ui/packages/image/src/image-viewer'
 
 export default {
     data() {
@@ -42,7 +40,7 @@ export default {
         this.getArtDetails();
         let that = this;
     },
-    components: { comments, SideCatalog },
+    components: { comments, SideCatalog, ElImageViewer },
     mounted() {},
     updated() {
         this.setImgOnClick();
@@ -78,13 +76,16 @@ export default {
                 });
             })
         },
+        closeViewer() {
+            this.dialogImgVisible = false;
+        },
     }
 }
 </script>
 <style lang="scss">
 @import "@/common/base.scss";
 
-.details-root {
+#art-details-root {
     width: $art_width_value;
     height: 100%;
     background-color: white;
@@ -107,72 +108,77 @@ export default {
     .el-image img {
         max-width: 100% !important;
     }
-}
 
-.content-bg {
-    padding: 10px;
-    background-color: white;
 
-    .art-title {
-        width: 100%;
-        text-align: left;
-        padding: 20px 0;
-        display: block;
-        font-size: 28px;
-        font-weight: 600;
-        margin-left: 20px;
-    }
+    .content-bg {
+        padding: 10px;
+        background-color: white;
 
-    .dart-user-info {
-        display: flex;
-        align-items: center;
-        text-align: left;
-        margin-left: 20px;
-        font-size: 13px;
-
-        span:nth-child(1) {
-            margin-right: 10px;
-            color: $text_yellow;
-            cursor: default;
+        .art-title {
+            width: 100%;
+            text-align: left;
+            padding: 20px 0;
+            display: block;
+            font-size: 28px;
+            font-weight: 600;
+            margin-left: 20px;
         }
 
-        img {
-            margin-left: 2px;
-            margin-right: 2px;
+        .dart-user-info {
+            display: flex;
+            align-items: center;
+            text-align: left;
+            margin-left: 20px;
+            font-size: 13px;
+
+            span:nth-child(1) {
+                margin-right: 10px;
+                color: $text_yellow;
+                cursor: default;
+            }
+
+            img {
+                margin-left: 2px;
+                margin-right: 2px;
+            }
+
+            span:nth-child(3) {
+                color: #666;
+            }
         }
 
-        span:nth-child(3) {
-            color: #666;
+        .art-content {
+            height: 100%;
+            text-align: left;
+            padding: 0 20px 20px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            line-height: 30px;
+            color: #333;
+        }
+
+        .details-comment {
+            padding: 0 30px 50px 30px;
+        }
+
+        a {
+            color: $text_blue;
         }
     }
 
-    .art-content {
-        height: 100%;
-        text-align: left;
-        padding: 0 20px 20px 20px;
-        border-bottom: 1px solid #f0f0f0;
-        line-height: 30px;
-        color: #333;
+    code {
+        font-size: 17px;
+        color: #555;
+        font-weight: bold;
     }
 
-    .details-comment {
-        padding: 0 30px 50px 30px;
+    pre {
+        padding: 0 10px;
+        background-color: #f6f6f6;
+        overflow: auto;
     }
 
-    a {
-        color: $text_blue;
+    .el-icon-circle-close {
+        color: white;
     }
-}
-
-code {
-    font-size: 17px;
-    color: #555;
-    font-weight: bold;
-}
-
-pre {
-    padding: 0 10px;
-    background-color: #f6f6f6;
-    overflow: auto;
 }
 </style>

@@ -115,7 +115,7 @@ export default {
         height: 100%;
         padding-left: 10px;
         padding-right: 10px;
-        background-color: white;
+        // background-color: white;
 
         .turn-page {
             margin-top: 30px;
