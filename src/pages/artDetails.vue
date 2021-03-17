@@ -167,7 +167,7 @@ export default {
 
     code {
         font-size: 17px;
-        color: #555;
+        color: $text_yellow_dark;
         font-weight: bold;
     }
 

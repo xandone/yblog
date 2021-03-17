@@ -57,7 +57,7 @@ export default {
                     for (let i = 0; i < this.artList.length; i++) {
                         if (i > 0) {
                             this.artList[i].showYear = this.artList[i].year != this.artList[i - 1].year;
-                            console.log(this.artList[i].showYear);
+                            // console.log(this.artList[i].showYear);
                         } else {
                             this.artList[0].showYear = true;
                         }

@@ -204,7 +204,7 @@ user-span {
         .archive-tv {
             position: relative;
             font-size: 16px;
-            color: $text_yellow;
+            color: $text_yellow_dark;
         }
 
         .archive-tv::after {
@@ -216,7 +216,7 @@ user-span {
             height: 2px;
             transition: .3s;
             opacity: .6;
-            background: $text_yellow;
+            background: $text_yellow_dark;
             transform-origin: center;
             transform: scaleX(0);
         }
