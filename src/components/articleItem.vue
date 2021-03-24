@@ -5,9 +5,9 @@
         </div>
             <div class="wrap-scan">
                 <div class="title-root">
-                    <a :href="['/artDetails/'+bean.artId]" target="_blank">
-                    <span class="title-span">{{bean.title}}</span>
-                </a>
+                    <a class="title-span" :href="['/artDetails/'+bean.artId]" target="_blank">
+                           {{bean.title}}
+                         </a>
                     <span class="art-type">{{bean.typeName}}</span>
                 </div>
                 <div>
@@ -70,9 +70,10 @@ item-span {
     }
 
     .title-root {
-        display: flex;
         width: 100%;
         align-items: center;
+        display: flex;
+        margin-right: 100px;
         justify-content: space-between;
 
         .title-span {
@@ -89,6 +90,7 @@ item-span {
             font-size: 13px;
             margin-right: 10px;
             color: $text_yellow;
+            display: inline-block;
         }
     }
 

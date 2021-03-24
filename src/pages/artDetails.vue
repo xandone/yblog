@@ -166,13 +166,14 @@ export default {
     }
 
     code {
-        font-size: 17px;
-        color: $text_yellow_dark;
-        font-weight: bold;
+        font-size: 16px;
+        color: #333;
+        // font-weight: bold;
+        font-family: "Menlo", "Courier New", "Monaco", "Spoqa Han Sans", monospace;
     }
 
     pre {
-        padding: 0 10px;
+        padding: 10px 20px;
         background-color: #f6f6f6;
         overflow: auto;
     }
