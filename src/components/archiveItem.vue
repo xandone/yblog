@@ -1,7 +1,7 @@
 <template>
     <div id="archive-item-root">
         <div class="achive-d-year">
-            <span v-if="bean.showYear">--{{bean.year}}--</span>
+            <span v-if="bean.showYear">---{{bean.year}}---</span>
         </div>
         <div class="archive-item">
             <a :href="['/'+bean.urlParam+'/'+bean.artId]" target="_blank"> <span class="title">{{bean.title}}</span></a>
@@ -42,13 +42,13 @@ export default {
 
         .title {
             color: #333;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
         }
 
         .date {
-            color: #888;
-            font-size: 15px;
+            color: #555;
+            font-size: 14px;
         }
 
         a span:focus,

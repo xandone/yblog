@@ -73,7 +73,6 @@ item-span {
         width: 100%;
         align-items: center;
         display: flex;
-        margin-right: 100px;
         justify-content: space-between;
 
         .title-span {

@@ -223,6 +223,7 @@ export default {
         margin-top: 10px;
 
         input {
+            margin-left: 10px;
             line-height: 40px;
             background-color: white;
             border: 0;
