@@ -5,7 +5,7 @@
             <div v-for='item in commentData' class="comment-info-root">
                 <div class="comment-user-info">
                     <div>
-                        <img :src="item.commentIcon===null?require(`@/assets/user_boy.png`):item.commentIcon" alt="" class="comment-ic">
+                        <img :src="item.commentIcon===null?require(`@/assets/user_boy.png`):item.commentIcon" alt="" class="comment-ic" @click.stop="go2fchain(item.visitorUrl)">
                         <span style="cursor: default">{{item.commentNick}}</span>
                         <span class="comment-browser-version">{{item.commentUserVer}}</span>
                     </div>
@@ -95,7 +95,6 @@ export default {
             this.page = val;
         },
         getJokeComments() {
-            console.log(this.artId);
             this.$axios.get(`/comment/list`, {
                     params: {
                         page: this.page,
@@ -118,6 +117,7 @@ export default {
                         tableData.commentNick = item.nickname;
                         tableData.commentUserId = item.commentUserId;
                         tableData.artId = item.artId;
+                        tableData.visitorUrl = item.visitorUrl;
 
                         this.commentData.push(tableData);
                     })
@@ -190,6 +190,13 @@ export default {
                 visitorUrl: this.visitorUrl,
             }
             setStore(VISITOR_INFO_KEY, JSON.stringify(Visitor));
+        },
+
+        go2fchain(visitorUrl) {
+            console.log("visitorUrl=" + visitorUrl);
+            if (visitorUrl) {
+                window.open(visitorUrl);
+            }
         },
         openToast(msg) {
             this.$notify.error({

@@ -67,7 +67,11 @@ export default {
         },
 
         setImgOnClick() {
-            let imgs = document.getElementsByTagName("img");
+            let root = document.getElementsByClassName('art-content')[0];
+            if (root === null) {
+                return;
+            }
+            let imgs = root.getElementsByTagName("img");
             let that = this;
             imgs.forEach(item => {
                 item.addEventListener('click', function(e) {
