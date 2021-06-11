@@ -6,10 +6,10 @@
             <span class="user-sign">Somebody has to win, so why not be me?</span>
             <div class="art-archive">
                 <div class="archive-code-info">
-                    <img src="../assets/code_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(2)">编 程({{adminInfo.artCounts}})</span>
+                    <img src="../assets/code_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(2)">编 程({{adminInfo.artCounts||'0'}})</span>
                 </div>
                 <div class="archive-code-info">
-                    <img src="../assets/essay_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(3)">杂 文({{adminInfo.essayCounts}})</span>
+                    <img src="../assets/essay_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(3)">杂 文({{adminInfo.essayCounts||'0'}})</span>
                 </div>
                 <div class="archive-code-info">
                     <img src="../assets/archive_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(4)">归 档({{adminInfo.totalArts}})</span>
@@ -18,7 +18,7 @@
                     <img src="../assets/about_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(5)">关 于</span>
                 </div>
             </div>
-           <!--  <div class="user-info">
+            <!--  <div class="user-info">
                 <a href="https://github.com/xandone" target="_blank">
                    <div class="github-span">
                       <img class="info-img" src="../assets/github.png" alt="">

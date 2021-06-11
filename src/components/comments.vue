@@ -6,7 +6,7 @@
                 <div class="comment-user-info">
                     <div>
                         <img :src="item.commentIcon===null?require(`@/assets/user_boy.png`):item.commentIcon" alt="" class="comment-ic" @click.stop="go2fchain(item.visitorUrl)">
-                        <span style="cursor: default">{{item.commentNick}}</span>
+                        <span  :class="item.visitorUrl===''?'anonymous-visitor':'visitor2'" @click.stop="go2fchain(item.visitorUrl)">{{item.commentNick}}</span>
                         <span class="comment-browser-version">{{item.commentUserVer}}</span>
                     </div>
                 </div>
@@ -280,6 +280,16 @@ export default {
         .comment-browser-version {
             font-size: 13px;
             color: #aaa;
+            cursor: default;
+        }
+
+        .anonymous-visitor {
+            cursor: default;
+        }
+
+        .visitor2 {
+            text-decoration: underline 1px;
+            cursor: pointer;
         }
     }
 

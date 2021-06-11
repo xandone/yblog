@@ -1,6 +1,6 @@
 <template>
     <div id="essay-root">
-          <div class="banner">
+        <div class="banner" v-if="isShowBanner">
             <el-carousel :interval="3000" height="400px">
                 <el-carousel-item v-for="ban in bannerData">
                     <a :href="['/essayDetails/'+ban.articelId]" target="_blank">
@@ -10,7 +10,7 @@
                 </el-carousel-item>
             </el-carousel>
         </div>
-        <div  class="essay-content">
+        <div class="essay-content">
             <essayItem v-for="item in essatDatas " :bean='item' v-bind:key='item.index'></essayItem>
             <div>
                 <span v-if="isCanPre" @click.stop="getArticleList(1)" class="turn-page previous-btn">←PREVIOUS</span>
@@ -40,7 +40,8 @@ export default {
             page: 1,
             row: 10,
             isCanPre: false,
-            isCanNext: false
+            isCanNext: false,
+            isShowBanner: false
         }
     },
     components: {
@@ -58,6 +59,7 @@ export default {
                     const data = result.data;
                     this.count = result.total;
                     this.bannerData = [];
+                    this.isShowBanner = data.length === 0 ? false : true;
                     data.forEach(item => {
                         const bannerData = {};
                         bannerData.imgUrl = item.imgUrl;
@@ -70,6 +72,7 @@ export default {
                 })
                 .catch((error) => {
                     console.log(error);
+                    this.isShowBanner = false;
                 });
 
         },
