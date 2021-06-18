@@ -58,6 +58,7 @@ user-span {
 }
 
 #about {
+    height: 100%;
     width: $root_width_value;
     position: relative;
     background-color: white;
@@ -67,6 +68,7 @@ user-span {
     .type-title {
         text-align: left;
         font-size: 20px;
+        line-height: 50px;
         font-weight: bold;
         color: #333;
         display: flex;

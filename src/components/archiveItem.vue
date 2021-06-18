@@ -1,10 +1,11 @@
 <template>
     <div id="archive-item-root">
-        <div class="achive-d-year">
-            <span v-if="bean.showYear">---{{bean.year}}---</span>
+        <div class="achive-d-year" v-if="bean.showYear">
+            <img src="../assets/line_ic.png" alt="">
+            <span>{{bean.year}}</span>
         </div>
-        <div class="archive-item">
-            <a :href="['/'+bean.urlParam+'/'+bean.artId]" target="_blank"> <span class="title">{{bean.title}}</span></a>
+        <div class="archive-item ech-r">
+            <a :href="['/'+bean.urlParam+'/'+bean.artId]" target="_blank" > <span class="title">{{bean.title}}</span></a>
             <span class="date">{{bean.postTime}}</span>
         </div>
     </div>
@@ -28,10 +29,12 @@ export default {
 
 #archive-item-root {
     .achive-d-year {
-        font-size: 16px;
-        text-align: left;
+        font-size: 28px;
+        font-weight: 400;
         line-height: 50px;
-        color: #555;
+        color: #333;
+        display: flex;
+        align-items: center;
     }
 
     .archive-item {
@@ -43,7 +46,6 @@ export default {
         .title {
             color: #333;
             font-size: 16px;
-            font-weight: bold;
         }
 
         .date {
@@ -52,10 +54,14 @@ export default {
         }
 
         a span:focus,
-        a span:hover {
+        a span:hover {}
+    }
 
-            color: $text_blue !important;
-        }
+    .ech-r:hover {
+        transform: translate3d(10px, 0, 0);
+
+        color: #333 !important;
+        font-weight: bold;
     }
 }
 </style>

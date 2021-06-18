@@ -149,8 +149,6 @@ export default {
 
 #essay-root {
     width: $root_width_value;
-    // min-height: 100%;
-    background-color: white;
 
     .banner {
         padding-left: 10px;

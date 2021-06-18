@@ -108,14 +108,10 @@ export default {
 
 #article-root {
     width: $root_width_value;
-    // min-height: 100%;
-    background-color: white;
 
     .article-content {
-        height: 100%;
         padding-left: 10px;
         padding-right: 10px;
-        // background-color: white;
 
         .turn-page {
             margin-top: 30px;
