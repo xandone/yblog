@@ -59,7 +59,6 @@ user-span {
 
 #about {
     width: $root_width_value;
-    min-height: 100%;
     position: relative;
     background-color: white;
     display: flex;

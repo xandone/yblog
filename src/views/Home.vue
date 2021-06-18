@@ -28,9 +28,7 @@ export default {
 
     .blog-info {
         width: 25%;
-        min-height: 100%;
         position: relative;
-        background-color: white;
     }
 }
 </style>
