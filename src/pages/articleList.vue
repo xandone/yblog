@@ -110,8 +110,8 @@ export default {
     width: $root_width_value;
 
     .article-content {
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
 
         .turn-page {
             margin-top: 30px;

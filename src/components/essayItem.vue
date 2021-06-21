@@ -97,8 +97,30 @@ item-span {
         overflow: hidden;
         white-space: nowrap;
         display: inline-block;
-        width: 500px;
         text-align: left;
+        position: relative;
+    }
+
+    a:hover {
+        color: #333;
+    }
+
+    .essay-title-span::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 2px;
+        height: 2px;
+        transition: .3s;
+        opacity: .6;
+        background: #333;
+        transform-origin: center;
+        transform: scaleX(0);
+    }
+
+    .essay-title-span:hover::after {
+        transform: scaleX(1);
     }
 }
 

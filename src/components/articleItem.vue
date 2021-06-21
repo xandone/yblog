@@ -1,27 +1,27 @@
 <template>
     <div id="item-root">
-        <div>
+        <!--         <div>
             <img :src="bean.coverImg" v-if="bean.coverImg" class="place-img" alt="">
-        </div>
-            <div class="wrap-scan">
-                <div class="title-root">
-                    <a class="title-span" :href="['/artDetails/'+bean.artId]" target="_blank">
+        </div> -->
+        <div class="wrap-scan">
+            <div class="title-root">
+                <a class="title-span" :href="['/artDetails/'+bean.artId]" target="_blank">
                            {{bean.title}}
                          </a>
-                    <span class="art-type">{{bean.typeName}}</span>
+                <span class="art-type">{{bean.typeName}}</span>
+            </div>
+            <div>
+                <div class="content-root">
+                    <span class="content-span">{{bean.content}}</span>
                 </div>
-                <div>
-                    <div class="content-root">
-                        <span class="content-span">{{bean.content}}</span>
-                    </div>
-                    <div class="scan-root">
-                        <!-- <span ><img src="../assets/scan.png" alt="">{{bean.artBrowseCount}}</span> -->
-                        <span ><img src="../assets/awesome.png" alt="">{{bean.artCommentCount}}</span>
-                    </div>
-                    <span class="date">{{bean.postTime}}</span>
+                <div class="scan-root">
+                    <!-- <span ><img src="../assets/scan.png" alt="">{{bean.artBrowseCount}}</span> -->
+                    <span ><img src="../assets/awesome.png" alt="">{{bean.artCommentCount}}</span>
                 </div>
+                <span class="date">{{bean.postTime}}</span>
             </div>
         </div>
+    </div>
 </template>
 <script>
 export default {
@@ -74,6 +74,7 @@ item-span {
         align-items: center;
         display: flex;
         justify-content: space-between;
+        margin-bottom: 3px;
 
         .title-span {
             font-weight: bold;
@@ -83,6 +84,7 @@ item-span {
             white-space: nowrap;
             display: inline-block;
             text-align: left;
+            position: relative;
         }
 
         .art-type {
@@ -90,6 +92,28 @@ item-span {
             margin-right: 10px;
             color: $text_yellow;
             display: inline-block;
+        }
+
+        a:hover {
+            color: #333;
+        }
+
+        .title-span::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 2px;
+            height: 2px;
+            transition: .3s;
+            opacity: .6;
+            background: #333;
+            transform-origin: center;
+            transform: scaleX(0);
+        }
+
+        .title-span:hover::after {
+            transform: scaleX(1);
         }
     }
 

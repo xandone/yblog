@@ -151,8 +151,8 @@ export default {
     width: $root_width_value;
 
     .banner {
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 16px;
+        padding-right: 16px;
         color: #475669;
         margin: 10px auto 0;
 
@@ -182,8 +182,8 @@ export default {
 
     .essay-content {
         // height: 100%;
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 16px;
+        padding-right: 16px;
         background-color: white;
 
         .turn-page {
