@@ -2,7 +2,7 @@
     <div id="about">
         <div class="project-info">
             <div class="type-title">
-                <img src="../assets/line_ic.png" alt=""><span class="project-info-title">项目信息汇总</span>
+                <span class="project-info-titlebar">项目信息汇总</span>
             </div>
             <div class="source-code-info">
                 <img src="../assets/vue_web.png"alt=""> <span > 本站源码：</span><a href="https://github.com/xandone/yblog" target="_blank">yblog</a>
@@ -23,7 +23,7 @@
             <div class="qr-code-root">
                 <div class="qr-code-android">
                     <div class="type-title">
-                        <img src="../assets/line_ic.png" alt=""> <span >Android apk下载</span>
+                        <span class="project-info-titlebar">Android apk下载</span>
                     </div>
                     <img class="qr-code-android-ma" src="../assets/yblogapp_qr_code.png" alt="">
                 </div>
@@ -84,7 +84,11 @@ user-span {
         text-align: left;
         margin-top: 20px;
 
-        .project-info-title {}
+        .project-info-titlebar {
+            border-left: 3px $text_yellow solid;
+            line-height: 20px;
+            padding-left: 10px;
+        }
 
         .source-code-info {
             display: flex;

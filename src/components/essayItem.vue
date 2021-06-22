@@ -1,7 +1,8 @@
 <template>
     <div class="essay-item-root">
         <div>
-            <img :src="bean.imgArr[0]" v-if="bean.isShowLeft" class="essay-place-img" alt="">
+            <img :src="bean.imgArr[0]" v-if="bean.isShowLeft" class="essay-place-img" alt=""
+            loading="lazy">
         </div>
             <div class="essay-wrap-scan">
                 <div class="essay-title-root">

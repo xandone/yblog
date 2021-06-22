@@ -1,8 +1,7 @@
 <template>
     <div id="archive-item-root">
         <div class="achive-d-year" v-if="bean.showYear">
-            <img src="../assets/line_ic.png" alt="">
-            <span>{{bean.year}}</span>
+            <span class="project-info-titlebar">{{bean.year}}</span>
         </div>
         <div class="archive-item ech-r">
             <a :href="['/'+bean.urlParam+'/'+bean.artId]" target="_blank" > <span class="title">{{bean.title}}</span></a>
@@ -32,16 +31,23 @@ export default {
         font-size: 28px;
         font-weight: 400;
         line-height: 50px;
+        height: 50px;
         color: #333;
         display: flex;
         align-items: center;
+
+        .project-info-titlebar {
+            border-left: 3px $text_yellow solid;
+            line-height: 26px;
+            padding-left: 10px;
+        }
     }
 
     .archive-item {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        line-height: 40px;
+        line-height: 35px;
 
         .title {
             color: #333;
