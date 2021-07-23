@@ -1,6 +1,9 @@
 <template>
-    <div id="app" v-on:click="createLoves($event)">
+    <!--     <div id="app" v-on:click="createLoves($event)">
         <background ref="background"></background>
+        <router-view />
+    </div> -->
+    <div id="app">
         <router-view />
     </div>
 </template>

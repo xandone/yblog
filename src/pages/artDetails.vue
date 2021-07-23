@@ -38,7 +38,7 @@ export default {
 
     created() {
         this.getArtDetails();
-        let that = this;
+        // document.title="dfsdfsdf"
     },
     components: { comments, SideCatalog, ElImageViewer },
     mounted() {},
