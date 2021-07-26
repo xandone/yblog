@@ -11,6 +11,9 @@
                 <div class="archive-code-info">
                     <img src="../assets/essay_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(3)">杂 文({{adminInfo.essayCounts||'0'}})</span>
                 </div>
+               <!--  <div class="archive-code-info">
+                    <img src="../assets/pic_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(6)">图片墙({{adminInfo.essayCounts||'0'}})</span>
+                </div> -->
                 <div class="archive-code-info">
                     <img src="../assets/archive_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(4)">归 档({{adminInfo.totalArts}})</span>
                 </div>
@@ -77,6 +80,9 @@ export default {
                     break;
                 case 5:
                     this.$router.push('/aboutMe');
+                    break;
+                case 6:
+                    this.$router.push('/picList');
                     break;
             }
         },
@@ -186,9 +192,9 @@ user-span {
             display: flex;
             align-items: center;
             font-size: 16px;
-            font-weight: bold;
+            // font-weight: bold;
             color: #333;
-            line-height: 35px;
+            line-height: 30px;
 
             img {
                 width: 20px;
