@@ -4,12 +4,13 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import splash from '@/pages/splash.vue'
 import articleList from '@/pages/articleList'
-import picList from '@/pages/picList'
+import photoWall from '@/pages/photoWall'
 import essayList from '@/pages/essayList'
 import aboutMe from '../pages/aboutMe.vue'
 import artDetails from '@/pages/artDetails.vue'
 import essayDetails from '@/pages/essayDetails.vue'
 import archive from '@/pages/archive.vue'
+import picList from '@/pages/picList.vue'
 
 Vue.use(VueRouter)
 
@@ -29,9 +30,9 @@ export default new Router({
                 name: 'articleList',
                 component: articleList,
             }, {
-                path: '/picList',
-                name: 'picList',
-                component: picList,
+                path: '/photoWall',
+                name: 'photoWall',
+                component: photoWall,
             }, {
                 path: '/essayList',
                 name: 'essayList',
@@ -45,7 +46,11 @@ export default new Router({
                 path: '/archive',
                 name: 'archive',
                 component: archive,
-            },
+            }, {
+                path: '/picList',
+                name: 'picList',
+                component: picList,
+            }
         ]
     }, {
         path: '/artDetails/:artId',
