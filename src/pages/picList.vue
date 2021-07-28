@@ -4,23 +4,30 @@
             <el-row>
                 <el-col :span="8">
                     <div class="pic-cover">
-                        <img :src="item.coverImg" class="place-img" alt="">
-                        <span class="pic-descrip">{{item.name}}({{item.count||0}})</span>
+                        <img :src="item.url" class="place-img" alt="">
+                        <span class="pic-descrip">{{item.title}}</span>
+                        <span class="pic-date">{{item.postTime}}</span>
                     </div>
                 </el-col>
                 <el-col :span="8" v-if="index+1<pics.length">
                     <div class="pic-cover">
-                        <img :src="pics[index+1].coverImg" class="place-img" alt="" >
-                        <span class="pic-descrip">{{pics[index+1].name}}({{pics[index+1].count||0}})</span>
+                        <img :src="pics[index+1].url" class="place-img" alt="" >
+                        <span class="pic-descrip">{{pics[index+1].title}}</span>
+                        <span class="pic-date">{{pics[index+1].postTime}}</span>
                     </div>
                 </el-col>
                 <el-col :span="8" v-if="index+2<pics.length">
                     <div class="pic-cover">
-                        <img :src="pics[index+2].coverImg" class="place-img" alt="" >
-                        <span class="pic-descrip">{{pics[index+2].name}}({{pics[index+2].count||0}})</span>
+                        <img :src="pics[index+2].url" class="place-img" alt="" >
+                        <span class="pic-descrip">{{pics[index+2].title}}</span>
+                        <span class="pic-date">{{pics[index+2].postTime}}</span>
                     </div>
                 </el-col>
             </el-row>
+        </div>
+        <div class="Pagination" style="text-align: left;margin-top: 30px;">
+            <el-pagination background @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-size="10" layout="total, prev, pager, next" :total="count">
+            </el-pagination>
         </div>
         <ElImageViewer v-if="dialogImgVisible" :on-close="closeViewer" :url-list="[selectImgSrc]" />
     </div>
@@ -30,44 +37,67 @@ import ElImageViewer from 'element-ui/packages/image/src/image-viewer'
 export default {
     data() {
         return {
-            pics: [{
-                    coverImg: "http://www.xandone.pub/FuGbIQJe3r-yAO0EjDBfA047NghH",
-                    name: "电影海报1",
-                    count: 10,
-                },
-                {
-                    coverImg: "http://www.xandone.pub/FiF_SMCgQk8QoMJBcAQADFA7oHS3",
-                    name: "电影海报2",
-                    count: 20,
-                },
-                {
-                    coverImg: "http://www.xandone.pub/Fl0QpQce-_LVjnm6LSt_XgYvTFES",
-                    name: "电影海报3",
-                    count: 20,
-                }, {
-                    coverImg: "http://www.xandone.pub/FiF_SMCgQk8QoMJBcAQADFA7oHS3",
-                    name: "电影海报4",
-                    count: 20,
-                }
-            ],
+            albumId: this.$route.query.albumId,
+            pics: [],
+            page: 1,
+            row: 10,
+            count: 0,
+            currentPage: 1,
             dialogImgVisible: false,
-            selectImgSrc: []
+            selectImgSrc: [],
         }
     },
 
     components: { ElImageViewer },
 
     created() {
-
+        this.getPhotos();
     },
 
-    updated() {},
+    mounted() {},
 
-    mounted() {
+    updated() {
         this.setImgOnClick();
     },
 
     methods: {
+        getPhotos() {
+            this.$axios.get(`/photo/photos`, {
+                    params: {
+                        page: this.page,
+                        row: this.row,
+                        albumId: this.albumId,
+                    }
+                })
+                .then((response) => {
+                    const art = response.data;
+                    const data = art.data;
+                    this.count = art.total;
+                    this.pics = [];
+                    data.forEach(item => {
+                        const tableData = {};
+                        tableData.title = item.title;
+                        tableData.albumId = item.albumId;
+                        tableData.id = item.id;
+                        tableData.url = item.url;
+                        tableData.count = item.count;
+                        tableData.postTime = item.postTime;
+
+                        this.pics.push(tableData);
+                    })
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+
+        },
+        handleSizeChange(val) {
+            console.log(`每页 ${val} 条`);
+        },
+        handleCurrentChange(val) {
+            this.currentPage = val;
+            this.page = val;
+        },
         setImgOnClick() {
             let root = document.getElementById('pic-root');
             if (root === null) {
@@ -76,7 +106,6 @@ export default {
 
             let imgs = root.getElementsByTagName("img");
             let that = this;
-            console.log(imgs.length);
             imgs.forEach(item => {
                 item.addEventListener('click', function(e) {
                     that.dialogImgVisible = true;
@@ -118,6 +147,12 @@ export default {
 
         .pic-descrip {
             font-size: 15px;
+            color: #333;
+            margin-top: 6px;
+        }
+
+        .pic-date {
+            font-size: 14px;
             color: #333;
             margin-top: 6px;
         }

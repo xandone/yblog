@@ -4,19 +4,23 @@
             <el-row>
                 <el-col :span="12">
                     <div class="pic-cover">
-                        <img :src="item.coverImg" class="place-img" alt="" fit="cover" @click="go2List()">
-                        <span class="pic-descrip">{{item.name}}({{item.count||0}})</span>
-                        <span class="pic-date">{{item.date}}</span>
+                        <img :src="item.url" class="place-img" alt="" fit="cover" @click="go2List(index)">
+                        <span class="pic-descrip">{{item.title}}({{item.count||0}})</span>
+                        <span class="pic-date">{{item.postTime}}</span>
                     </div>
                 </el-col>
                 <el-col :span="12" v-if="index+1<pics.length">
                     <div class="pic-cover">
-                        <img :src="pics[index+1].coverImg" class="place-img" alt="" fit="cover" @click="go2List()">
-                        <span class="pic-descrip">{{pics[index+1].name}}({{pics[index+1].count||0}})</span>
-                        <span class="pic-date">{{item.date}}</span>
+                        <img :src="pics[index+1].url" class="place-img" alt="" fit="cover" @click="go2List(index+1)">
+                        <span class="pic-descrip">{{pics[index+1].title}}({{pics[index+1].count||0}})</span>
+                        <span class="pic-date">{{pics[index+1].postTime}}</span>
                     </div>
                 </el-col>
             </el-row>
+        </div>
+        <div>
+            <span v-if="isCanPre" @click.stop="getList(1)" class="turn-page previous-btn">←PREVIOUS</span>
+            <span v-if="isCanNext" @click.stop="getList(2)" class="turn-page next-btn">NEXT→</span>
         </div>
     </div>
 </template>
@@ -24,30 +28,58 @@
 export default {
     data() {
         return {
-            pics: [{
-                    coverImg: "http://www.xandone.pub/FiF_SMCgQk8QoMJBcAQADFA7oHS3",
-                    name: "电影海报",
-                    date: "2012-01-12",
-                    count: 10,
-                },
-                {
-                    coverImg: "http://www.xandone.pub/FiF_SMCgQk8QoMJBcAQADFA7oHS3",
-                    name: "电影海报2",
-                    date: "2012-05-03",
-                    count: 20,
-                },
-                {
-                    coverImg: "http://www.xandone.pub/FiF_SMCgQk8QoMJBcAQADFA7oHS3",
-                    name: "电影海报3",
-                    date: "2012-06-15",
-                    count: 30,
-                }
-            ],
+            pics: [],
+            page: 1,
+            row: 10,
+            isCanPre: false,
+            isCanNext: false,
         }
     },
+    mounted() {
+        this.getList();
+    },
     methods: {
-        go2List() {
-            this.$router.push('/picList');
+        getList(requstType) {
+            this.$axios.get(`/photo/photoCovers`, {
+                    params: {
+                        page: this.page,
+                        row: this.row,
+                    }
+                })
+                .then((response) => {
+                    const tempbean = response.data;
+                    const data = tempbean.data;
+                    this.pics = [];
+                    data.forEach(item => {
+                        let tableData = {};
+                        tableData.title = item.title;
+                        tableData.id = item.id;
+                        tableData.url = item.url;
+                        tableData.count = item.count;
+                        tableData.postTime = item.postTime;
+                        this.pics.push(tableData);
+                    });
+                    this.isCanNext = tempbean.total > this.row * this.page;
+                    this.isCanPre = this.page > 1;
+                    window.scrollTo(0, 0);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    if (requstType = 1) {
+                        this.page++;
+                    } else if (requstType == 2) {
+                        this.page--;
+                    }
+                });
+        },
+        go2List(index) {
+            this.$router.push({
+                path: '/picList',
+                //相当于get，这里使用"path"路由，如果使用params（相当于post），需用"name"进行路由
+                query: {
+                    albumId: this.pics[index].id,
+                }
+            })
         }
     }
 }
