@@ -1,6 +1,6 @@
 <template>
     <div id="essay-root">
-        <div class="banner" v-if="isShowBanner">
+      <!--   <div class="banner" v-if="isShowBanner">
             <el-carousel :interval="3000" height="400px">
                 <el-carousel-item v-for="ban in bannerData">
                     <a :href="['/essayDetails/'+ban.articelId]" target="_blank">
@@ -9,7 +9,7 @@
                     </a>
                 </el-carousel-item>
             </el-carousel>
-        </div>
+        </div> -->
         <div class="essay-content">
             <essayItem v-for="item in essatDatas " :bean='item' v-bind:key='item.index'></essayItem>
             <div>
@@ -48,7 +48,7 @@ export default {
         essayItem,
     },
     mounted() {
-        this.getBanners();
+        // this.getBanners();
         this.getArticleList();
     },
     methods: {

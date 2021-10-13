@@ -1,9 +1,9 @@
 <template>
     <div class="essay-item-root">
-        <div>
+<!--         <div>
             <img :src="bean.imgArr[0]" v-if="bean.isShowLeft" class="essay-place-img" alt=""
             loading="lazy">
-        </div>
+        </div> -->
             <div class="essay-wrap-scan">
                 <div class="essay-title-root">
                     <a :href="['/essayDetails/'+bean.essayId]" target="_blank">
@@ -14,9 +14,9 @@
                     <div class="essay-content-root">
                         <span class="essay-content-span">{{bean.content}}</span>
                     </div>
-                    <div class="essay-img" v-if="bean.isShowBottom">
+                 <!--    <div class="essay-img" v-if="bean.isShowBottom">
                         <img  v-for="item in bean.imgArr" alt="" :src="item" v-if="bean.isShowBottom">
-                    </div>
+                    </div> -->
                         <div class="essay-scan-root">
                             <!--  <span ><img src="../assets/scan.png" alt="">{{bean.essayBrowseCount}}</span> -->
                             <span ><img src="../assets/awesome.png" alt="">{{bean.essayCommentCount}}</span>

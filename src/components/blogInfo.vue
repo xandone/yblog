@@ -11,9 +11,9 @@
                 <div class="archive-code-info">
                     <img src="../assets/essay_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(3)">杂 文({{adminInfo.essayCounts||'0'}})</span>
                 </div>
-                <div class="archive-code-info">
-                    <img src="../assets/pic_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(6)">图片墙({{adminInfo.essayCounts||'0'}})</span>
-                </div>
+              <!--   <div class="archive-code-info">
+                    <img src="../assets/pic_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(6)">图 片({{adminInfo.essayCounts||'0'}})</span>
+                </div> -->
                 <div class="archive-code-info">
                     <img src="../assets/archive_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(4)">归 档({{adminInfo.totalArts}})</span>
                 </div>
