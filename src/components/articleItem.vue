@@ -14,10 +14,10 @@
                 <div class="content-root">
                     <span class="content-span">{{bean.content}}</span>
                 </div>
-                <div class="scan-root">
-                    <!-- <span ><img src="../assets/scan.png" alt="">{{bean.artBrowseCount}}</span> -->
+             <!--    <div class="scan-root">
+                    <span ><img src="../assets/scan.png" alt="">{{bean.artBrowseCount}}</span>
                     <span ><img src="../assets/awesome.png" alt="">{{bean.artCommentCount}}</span>
-                </div>
+                </div> -->
                 <span class="date">{{bean.postTime}}</span>
             </div>
         </div>

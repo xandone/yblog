@@ -66,7 +66,7 @@ export default {
             padding-bottom: 2px;
             margin-left: 8px;
             margin-top: 8px;
-            border: 0.5px solid $text_yellow;
+            border: 0.5px solid #ddd;
             border-radius: 2px;
             cursor: pointer;
             position: relative;

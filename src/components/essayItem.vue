@@ -17,10 +17,10 @@
                  <!--    <div class="essay-img" v-if="bean.isShowBottom">
                         <img  v-for="item in bean.imgArr" alt="" :src="item" v-if="bean.isShowBottom">
                     </div> -->
-                        <div class="essay-scan-root">
-                            <!--  <span ><img src="../assets/scan.png" alt="">{{bean.essayBrowseCount}}</span> -->
+                       <!--  <div class="essay-scan-root">
+                             <span ><img src="../assets/scan.png" alt="">{{bean.essayBrowseCount}}</span>
                             <span ><img src="../assets/awesome.png" alt="">{{bean.essayCommentCount}}</span>
-                        </div>
+                        </div> -->
                         <span class="essay-date">{{bean.postTime}}</span>
                     </div>
                 </div>

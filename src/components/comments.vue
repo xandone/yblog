@@ -20,11 +20,11 @@
                 </div>
             </div>
         </div>
-        <div class="Pagination" style="text-align: left;margin-top: 10px;">
+     <!--    <div class="Pagination" style="text-align: left;margin-top: 10px;">
             <el-pagination background @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-size="10" layout="total, prev, pager, next" :total="count">
             </el-pagination>
-        </div>
-        <div class="visitor">
+        </div> -->
+      <!--   <div class="visitor">
             <input placeholder="昵称" v-model="nickname">
             </input>
             <input placeholder="邮箱" v-model="email">
@@ -36,7 +36,7 @@
             <el-input type="textarea" :autosize="{ minRows: minRows, maxRows: maxRows}" placeholder="请输入内容.." v-model="details" style="width: 100%;" maxlength="200" show-word-limit>
             </el-input>
             <el-button @click="addComment" type="primary" size="small" class="addbtn">发 布</el-button>
-        </div>
+        </div> -->
     </div>
 </template>
 <script>

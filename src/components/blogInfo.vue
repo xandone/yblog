@@ -3,7 +3,7 @@
         <div class="user-root">
             <img class="user-icon" src="../assets/head_icon.jpg" alt="">
             <span class="user-name">xandone</span>
-            <span class="user-sign">Somebody has to win, so why not be me?</span>
+            <span class="user-sign">呀哈哈~</span>
             <div class="art-archive">
                 <div class="archive-code-info">
                     <img src="../assets/code_ic.png" alt=""> <span class="archive-tv" @click.stop="handleSelect(2)">编 程({{adminInfo.artCounts||'0'}})</span>
@@ -146,11 +146,11 @@ user-span {
 
         .user-sign {
             max-width: 100%;
-            font-size: 18px;
+            font-size: 16px;
             text-align: left;
             font-style: italic;
             word-break: normal;
-            padding-left: 10px;
+            padding: 10px;
         }
 
         .user-info {
