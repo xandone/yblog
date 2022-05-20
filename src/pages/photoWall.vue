@@ -25,100 +25,100 @@
     </div>
 </template>
 <script>
-export default {
-    data() {
-        return {
-            pics: [],
-            page: 1,
-            row: 10,
-            isCanPre: false,
-            isCanNext: false,
-        }
-    },
-    mounted() {
-        this.getList();
-    },
-    methods: {
-        getList(requstType) {
-            this.$axios.get(`/photo/photoCovers`, {
-                    params: {
-                        page: this.page,
-                        row: this.row,
-                    }
-                })
-                .then((response) => {
-                    const tempbean = response.data;
-                    const data = tempbean.data;
-                    this.pics = [];
-                    data.forEach(item => {
-                        let tableData = {};
-                        tableData.title = item.title;
-                        tableData.id = item.id;
-                        tableData.url = item.url;
-                        tableData.count = item.count;
-                        tableData.postTime = item.postTime;
-                        this.pics.push(tableData);
-                    });
-                    this.isCanNext = tempbean.total > this.row * this.page;
-                    this.isCanPre = this.page > 1;
-                    window.scrollTo(0, 0);
-                })
-                .catch((error) => {
-                    console.log(error);
-                    if (requstType = 1) {
-                        this.page++;
-                    } else if (requstType == 2) {
-                        this.page--;
-                    }
-                });
+    export default {
+        data() {
+            return {
+                pics: [],
+                page: 1,
+                row: 10,
+                isCanPre: false,
+                isCanNext: false,
+            }
         },
-        go2List(index) {
-            this.$router.push({
-                path: '/picList',
-                //相当于get，这里使用"path"路由，如果使用params（相当于post），需用"name"进行路由
-                query: {
-                    albumId: this.pics[index].id,
-                }
-            })
+        mounted() {
+            this.getList();
+        },
+        methods: {
+            getList(requstType) {
+                this.$axios.get(`/photo/photoCovers`, {
+                        params: {
+                            page: this.page,
+                            row: this.row,
+                        }
+                    })
+                    .then((response) => {
+                        const tempbean = response.data;
+                        const data = tempbean.data;
+                        this.pics = [];
+                        data.forEach(item => {
+                            let tableData = {};
+                            tableData.title = item.title;
+                            tableData.id = item.id;
+                            tableData.url = item.url;
+                            tableData.count = item.count;
+                            tableData.postTime = item.postTime;
+                            this.pics.push(tableData);
+                        });
+                        this.isCanNext = tempbean.total > this.row * this.page;
+                        this.isCanPre = this.page > 1;
+                        window.scrollTo(0, 0);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        if (requstType = 1) {
+                            this.page++;
+                        } else if (requstType == 2) {
+                            this.page--;
+                        }
+                    });
+            },
+            go2List(index) {
+                this.$router.push({
+                    path: '/picList',
+                    //相当于get，这里使用"path"路由，如果使用params（相当于post），需用"name"进行路由
+                    query: {
+                        albumId: this.pics[index].id,
+                    }
+                })
+            }
         }
     }
-}
 </script>
 <style lang="scss">
-@import "@/common/base.scss";
+    @import "@/common/base.scss";
 
-#photo-root {
-    width: $root_width_value;
-    padding: 10px;
-    text-align: left;
+    #photo-root {
+        width: $root_width_value;
+        padding: 10px;
+        text-align: left;
 
-    .pic-cover {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 10px;
-        padding: 6px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+        .pic-cover {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+            padding: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
 
-        .place-img {
-            width: 100%;
-            height: 220px;
+            .place-img {
+                width: 100%;
+                height: 220px;
 
-            // box-shadow: 2px 2px 5px #666;
+                // box-shadow: 2px 2px 5px #666;
+            }
+
+            .pic-descrip {
+                font-size: 15px;
+                color: #333;
+                margin-top: 6px;
+            }
+
+            .pic-date {
+                font-size: 14px;
+                color: #333;
+                margin-top: 6px;
+            }
         }
 
-        .pic-descrip {
-            font-size: 15px;
-            color: #333;
-            margin-top: 6px;
-        }
-
-        .pic-date {
-            font-size: 14px;
-            color: #333;
-            margin-top: 6px;
-        }
     }
-
-}
 </style>
