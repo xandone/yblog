@@ -1,3 +1,4 @@
+<!-- 个人信息 -->
 <template>
     <div id="blog-info-root">
         <div class="user-root">
@@ -212,7 +213,7 @@
             .archive-tv {
                 position: relative;
                 font-size: 16px;
-                color: $text_yellow;
+                color: $text_black;
             }
 
             .archive-tv::after {
@@ -224,7 +225,7 @@
                 height: 2px;
                 transition: .3s;
                 opacity: .6;
-                background: $text_yellow;
+                background: $text_black;
                 transform-origin: center;
                 transform: scaleX(0);
             }

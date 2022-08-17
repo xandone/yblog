@@ -1,3 +1,4 @@
+<!-- 杂文详情页 -->
 <template>
     <div id="essay-details-root">
         <div class="essay-content-bg">

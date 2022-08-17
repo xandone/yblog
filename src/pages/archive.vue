@@ -1,3 +1,4 @@
+<!-- 归档 -->
 <template>
     <div id="archive-root">
         <div class="item-type">
@@ -116,7 +117,7 @@
 
 
         .el-pagination.is-background .el-pager li:not(.disabled).active {
-            background-color: $text_yellow;
+            background-color: $text_blue;
             color: white;
         }
     }

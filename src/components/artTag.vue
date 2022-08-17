@@ -1,3 +1,4 @@
+<!-- 编程文章分类 -->
 <template>
     <div class="tag-root">
         <div class="art-tag-span" v-for="(item,index) in tagList" @click.stop="clickTag(item.type,index)">
@@ -81,7 +82,7 @@
                 right: 0;
                 transition: .3s;
                 opacity: .3;
-                background: $text_yellow;
+                background: $text_blue;
                 transform-origin: left;
                 transform: scaleX(0);
             }
@@ -93,11 +94,13 @@
         }
 
         .active {
-            background-color: $text_yellow;
+            background-color: $text_blue;
+            color: white;
         }
 
         .unactive {
             background-color: white;
+            color: black;
         }
 
         span {
@@ -105,12 +108,12 @@
             font-style: italic;
         }
 
-        span:nth-child(1) {
-            color: #666;
-        }
+        // span:nth-child(1) {
+        //     color: #666;
+        // }
 
-        span:nth-child(2) {
-            color: $text_blue;
-        }
+        // span:nth-child(2) {
+        //     color: $text_blue;
+        // }
     }
 </style>

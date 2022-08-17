@@ -1,3 +1,4 @@
+<!-- 杂文列表 -->
 <template>
     <div id="essay-root">
         <!--   <div class="banner" v-if="isShowBanner">
@@ -116,9 +117,9 @@
                     })
                     .catch((error) => {
                         console.log(error);
-                        if (requstType = 1) {
+                        if (requstType === 1) {
                             this.page++;
-                        } else if (requstType == 2) {
+                        } else if (requstType === 2) {
                             this.page--;
                         }
                     });
@@ -195,13 +196,14 @@
                 font-size: 26px;
                 font-weight: bold;
                 color: $text_blue;
-                border: 1px solid $text_yellow;
+                border: 1px solid $divide_line_color;
                 text-align: center;
             }
 
             .turn-page:hover {
-                background-color: $text_yellow;
+                background-color: $text_blue;
                 cursor: pointer;
+                color: white;
             }
 
             .previous-btn {

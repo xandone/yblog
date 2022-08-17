@@ -1,3 +1,4 @@
+<!-- 归档item -->
 <template>
     <div id="archive-item-root">
         <div class="achive-d-year" v-if="bean.showYear">
