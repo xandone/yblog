@@ -11,7 +11,7 @@
                 </el-carousel-item>
             </el-carousel>
         </div> -->
-        <div class="essay-content">
+        <div class="essay-content" v-if="!isloading">
             <essayItem v-for="item in essatDatas " :bean='item' v-bind:key='item.index'></essayItem>
             <div>
                 <span v-if="isCanPre" @click.stop="getArticleList(1)" class="turn-page previous-btn">←PREVIOUS</span>
@@ -19,11 +19,14 @@
             </div>
         </div>
         <!-- <nodata v-if="isNodata" /> -->
+
+        <loadview v-if="isloading" />
     </div>
 </template>
 <script type="text/javascript">
     import essayItem from "../components/essayItem.vue"
     import vueEvent from '@/bus/vueEvent.js'
+    import loadview from '@/components/loadingview'
     import {
         friendlyFormatTime
     } from '@/utils/simpleUtils'
@@ -44,11 +47,13 @@
                 row: 10,
                 isCanPre: false,
                 isCanNext: false,
-                isShowBanner: false
+                isShowBanner: false,
+                isloading: false,
             }
         },
         components: {
             essayItem,
+            loadview,
         },
         mounted() {
             // this.getBanners();
@@ -82,6 +87,7 @@
             //requstType,1:前一页，2：后一页
             getArticleList(requstType) {
                 let that = this;
+                this.isloading = true;
                 if (requstType == 1) {
                     this.page--;
                 } else if (requstType == 2) {
@@ -114,8 +120,10 @@
                         this.isCanNext = essaybean.total > this.row * this.page;
                         this.isCanPre = this.page > 1;
                         window.scrollTo(0, 0);
+                        this.isloading = false;
                     })
                     .catch((error) => {
+                        this.isloading = false;
                         console.log(error);
                         if (requstType === 1) {
                             this.page++;

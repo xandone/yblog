@@ -4,7 +4,7 @@
         <div class="art-tag">
             <artTag @clickTag="searchByTag"></artTag>
         </div>
-        <div v-if="!isNodata" class="article-content">
+        <div v-if="!isNodata&&!isloading" class="article-content">
             <articleItem v-for="item in tableData " :bean='item' v-bind:key='item.index'></articleItem>
             <div>
                 <span v-if="isCanPre" @click.stop="getArticleList(tagType,1)"
@@ -13,12 +13,14 @@
             </div>
         </div>
         <nodata v-if="isNodata" />
+        <loadView v-if="isloading" />
     </div>
 </template>
 <script>
     import articleItem from '@/components/articleItem'
     import artTag from '@/components/artTag'
     import nodata from '@/components/nodata'
+    import loadView from '@/components/loadingview'
     import vueEvent from '@/bus/vueEvent.js'
     import {
         friendlyFormatTime
@@ -29,6 +31,7 @@
             articleItem,
             artTag,
             nodata,
+            loadView
         },
 
         data() {
@@ -40,7 +43,8 @@
                 tagType: -1,
                 isNodata: false,
                 isCanPre: false,
-                isCanNext: false
+                isCanNext: false,
+                isloading: false
             }
         },
         created() {
@@ -52,6 +56,7 @@
         methods: {
             //requstType,1:前一页，2：后一页
             getArticleList(type, requstType) {
+                this.isloading = true;
                 if (requstType == 1) {
                     this.page--;
                 } else if (requstType == 2) {
@@ -86,8 +91,10 @@
                         this.isCanNext = artBean.total > this.row * this.page;
                         this.isCanPre = this.page > 1;
                         window.scrollTo(0, 0);
+                        this.isloading = false;
                     })
                     .catch((error) => {
+                        this.isloading = false;
                         console.log(error);
                         if (requstType === 1) {
                             this.page++;

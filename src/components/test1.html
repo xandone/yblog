@@ -1,0 +1,42 @@
+<div class="box">
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row"></div>
+</div>
+
+<style>
+    .box .row {
+        height: 30px;
+        margin-bottom: 16px;
+        background: linear-gradient(90deg, #ddd, #edeff1, #ddd);
+        background-size: 500px 50px;
+        animation: skeleton-stripes .6s linear infinite
+    }
+
+    .box .row:nth-of-type(1) {
+        width: 60%;
+    }
+
+    .box .row:nth-of-type(2) {
+        width: 100%;
+    }
+
+    .box .row:nth-of-type(3) {
+        width: 80%;
+    }
+
+    .box .row:nth-of-type(4) {
+        width: 50%;
+    }
+
+    @keyframes skeleton-stripes {
+        0% {
+            background-position: 0 0
+        }
+
+        to {
+            background-position: 500px 0
+        }
+    }
+</style>

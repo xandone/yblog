@@ -1,28 +1,33 @@
 <!-- 归档 -->
 <template>
     <div id="archive-root">
-        <div class="item-type">
+        <div class="item-type" v-if="!isloading">
             <!--   <div class="item-type-title">
                 <img src="../assets/line_ic.png" alt=""> <span>归档</span>
             </div> -->
-            <item v-for="bean in artList" :bean="bean"></item>
-            <div class="Pagination" style="text-align: left;margin-top: 10px;">
-                <el-pagination background @size-change="handleSizeChange" @current-change="handleCurrentChange"
-                    :current-page="currentPage" :page-size="15" layout="total, prev, pager, next" :total="count">
-                </el-pagination>
-            </div>
+            <item v-for="bean in artList" :bean="bean" :key="bean.artId"></item>
+        </div>
+
+        <loadview v-if="isloading" />
+
+        <div class="Pagination" style="text-align: left;margin-top: 10px;">
+            <el-pagination background @size-change="handleSizeChange" @current-change="handleCurrentChange"
+                :current-page="currentPage" :page-size="15" layout="total, prev, pager, next" :total="count">
+            </el-pagination>
         </div>
     </div>
 </template>
 <script type="text/javascript">
     import item from "@/components/archiveItem.vue"
+    import loadview from "@/components/loadingview"
     import {
         formatDate
     } from '@/utils/simpleUtils'
 
     export default {
         components: {
-            item
+            item,
+            loadview,
         },
         data() {
             return {
@@ -31,6 +36,7 @@
                 row: 15,
                 count: 0,
                 currentPage: 1,
+                isloading: false,
             }
         },
         mounted() {
@@ -38,6 +44,7 @@
         },
         methods: {
             getArchiveList() {
+                this.isloading = true;
                 this.$axios.get(`/art/archivelist`, {
                         params: {
                             page: this.page,
@@ -69,8 +76,10 @@
                             }
                         }
                         window.scrollTo(0, 0);
+                        this.isloading = false;
                     })
                     .catch((error) => {
+                        this.isloading = false;
                         console.log(error);
                     });
             },
@@ -92,7 +101,6 @@
     #archive-root {
         width: $root_width_value;
         padding: 10px;
-        display: flex;
 
         .item-type {
             width: 80%;

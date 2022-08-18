@@ -1,9 +1,8 @@
+<!-- 启动页 -->
 <template>
     <div class="splash-root">
-        <div class="img-bg">
-            <el-image :fit='cover' src="http://www.xandone.pub/huoxing.jpg" style="width: 100%; height: 100%">
-            </el-image>
-        </div>
+        <el-image :fit='cover' src="http://www.xandone.pub/huoxing.jpg" style="width: 100%; height: 100%">
+        </el-image>
         <div class="content">
             <div>
                 <span class="logo-span">xandone</span>
@@ -41,12 +40,6 @@
         height: 100%;
         // background: url('http://www.xandone.pub/mainimage.jpg');
         background-color: black;
-
-        .img-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
 
         .content {
             position: absolute;
