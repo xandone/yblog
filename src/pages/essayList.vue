@@ -20,7 +20,7 @@
         </div>
         <!-- <nodata v-if="isNodata" /> -->
 
-        <loadview v-if="isloading" />
+        <loadview v-if="isloading" class="loading" />
     </div>
 </template>
 <script type="text/javascript">
@@ -155,7 +155,7 @@
 
     }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
     @import "@/common/base.scss";
 
     #essay-root {
@@ -223,6 +223,11 @@
                 float: right;
                 margin-right: 20px;
             }
+        }
+
+        .loading {
+            margin-left: 10px;
+            margin-top: 10px;
         }
     }
 </style>

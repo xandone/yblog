@@ -1,7 +1,8 @@
 <!-- 编程文章分类 -->
 <template>
     <div class="tag-root">
-        <div class="art-tag-span" v-for="(item,index) in tagList" @click.stop="clickTag(item.type,index)">
+        <div class="art-tag-span" v-for="(item,index) in tagList" v-bind:key='index'
+            @click.stop="clickTag(item.type,index)">
             <div :class="index==indexMark?'active':'unactive'">
                 <span>{{item.typeName}}</span>
                 <span>({{item.count}})</span>

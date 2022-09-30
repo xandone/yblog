@@ -13,7 +13,7 @@
             </div>
         </div>
         <nodata v-if="isNodata" />
-        <loadView v-if="isloading" />
+        <loadView v-if="isloading" class="loading" />
     </div>
 </template>
 <script>
@@ -114,7 +114,7 @@
 
     }
 </script>
-<style lang='scss'>
+<style lang='scss' scoped>
     @import "@/common/base.scss";
 
     #article-root {
@@ -165,6 +165,10 @@
 
         }
 
+        .loading {
+            margin-left: 10px;
+            margin-top: 10px;
+        }
 
     }
 </style>
